@@ -1,0 +1,287 @@
+body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Acumin Pro"
+}
+
+:root{
+  --primary-color:#006EB6;
+  --secondary-color:#A2DAFF;
+  --gray:#ADB5BD;
+  --bold-gray:#555555;
+  --RM-color: #85CEFF;
+  --merit-color: #006EB6;
+  --total-color: #E6E5E0;
+}
+.inter-font {
+  font-family: "Inter", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+#calculatorScreen{
+/*   border-style:solid;
+  border-color: var(--primary-color);
+  border-width: thin;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin:15px;
+  border-radius:10px;
+  max-width: 300px;
+  min-width: 300px; */
+  background-color: #006EB6;
+  display: flex;
+  width: 1452px;
+  padding: 64px 174px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 31px;
+}
+
+.calculatorHeader{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.calculatorHeader h1{
+    color: #FFFFFF;
+}
+
+form{
+  display: flex;
+  flex-direction:column;
+}
+.calcOpt{
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  justify-content: space-evenly;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 0px; /* 0% */
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+}
+
+.calcOpt p{
+  display: flex;
+  padding: 24px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex: 1 0 0;
+}
+
+.current{
+  color: var(--primary-color);
+  border-bottom: 5px solid #006EB6;
+}
+
+.grey{
+  color: var(--gray);
+  font-size: .8em;
+  padding-left: 6px;
+  border-bottom: 2px solid var(--Gray-500, #ADB5BD);
+}
+.bold{
+  color: var(--bold-gray);
+}
+
+.calculatorContainer{
+  display: flex;
+  align-items: center;
+  gap: 31px;
+}
+
+.calculator, .results{
+  background-color: white;
+  display: flex;
+  width: 445px;
+  height: 633px;
+  padding: 26px 24px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  border-radius: 12px;
+  background: var(--Gray-100, #F8F9FA);
+}
+
+
+select, option{
+  border-color: var(--gray);
+  margin: 5px 0px 15px 0px;
+  padding: 12px;
+  border-radius:8px;
+}
+.checks{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  
+}
+.checkLabels{
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 280px;
+  padding: 10px;
+  
+}
+
+.checkLabels p{
+  margin: 0;
+}
+
+#calculate{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding:12px;
+  background-color:var(--primary-color);
+  border-radius: 5px;
+  border-color:var(--primary-color);
+  margin-bottom: 20px;
+  
+}
+
+.calculateButton{
+  color: #FFFF;
+}
+
+.results{
+  display:none;
+  
+}
+
+
+.resultsHeader{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.breakdown{
+  color: var(--bold-gray); 
+}
+
+.breakdown2{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+.merit{
+  color: var(--merit-color);
+  font-weight: bold;
+}
+
+.rMissionary{
+  color: var(--RM-color);
+  font-weight: bold;
+}
+
+@media screen and (min-width: 832px){
+  #calculatorScreen{
+    min-width:900px;
+    max-width:900px;
+  }
+  .calculatorContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    margin:15px;
+  }
+  /* .calculator{
+    display: block;
+    width:390px
+  } */
+  .results{
+    display: block;
+    width:390px;
+  }
+  .checkLabels{
+    max-width: 390px;
+  }
+  
+  #startOver{
+    display: none;
+  }
+  
+}
+
+/******************************************************************************************************************************************************************************/
+
+
+@property --merit {
+  syntax: "<percentage>";
+  inherits: true;
+  initial-value: 0%;
+}
+
+@property --RM {
+  syntax: "<percentage>";
+  inherits: true;
+  initial-value: 0%;
+}
+
+@keyframes progress {
+  from {
+    --merit: 0%;
+    --RM: 0%
+  }
+
+  to {
+    --merit: 0%;
+    --RM: 0%
+  }
+}
+
+.circle {
+  --merit: 0%;
+  --RM: 0%;
+ 
+  background: conic-gradient(
+    at center,
+    var(--merit-color) var(--merit),
+    calc(var(--merit)),
+    var(--RM-color) calc(var(--RM)),
+    calc(var(--RM)),
+    var(--total-color) calc(var(--merit))
+  );
+  animation: progress 2s linear 1 forwards;
+  border-radius: 50%;
+  mask: radial-gradient(circle at center, transparent 60%, black 60%);
+  position: absolute;
+  inset: 0;
+}
+
+.circleContainer {
+  filter: drop-shadow(0 0 0.8vmin hsla(0, 0, 0%, 1));
+  position: relative;
+  width: 200px;
+  margin: 25px;
+  aspect-ratio: 1;
+
+  &:after {
+    display: flex;
+    content: "Total Scholarships";
+    white-space: pre;
+    position: absolute;
+    inset: 0;
+    color: var(--bold-gray);
+    display: grid;
+    place-items: center;
+  }
+}
+
+.circle.animate {
+  animation: progress 2s linear 1 forwards;
+}
+
+

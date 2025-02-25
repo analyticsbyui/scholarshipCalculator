@@ -1,0 +1,119 @@
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+</head>
+
+
+<body>
+    <main>
+      <div>
+        <div id="calculatorScreen" class='inter-font'>
+          <div class="calculatorHeader">
+            <h1 class="bold">Tuition calculator</h1>
+          </div>
+          <div class="calculatorContainer">
+            <div class="calculator" >
+            <div class='grey calcOpt'>
+              <p class='current'>NEW STUDENTS</p>       
+              <p class=''>TRANSFER STUDENTS</p>  
+            </div>
+            <div>
+              <p>High school graduates going to college for the first time</p>
+              <form action="">
+                <label for="" class="grey">High School GPA</label>
+                <select id="GPA" name="gpa" class="styled-select">
+                  <option value="" disabled selected>NA</option>
+                  <option value="3.50">3.50</option>
+                  <option value="3.55">3.55</option>
+                  <option value="3.60">3.60</option>
+                  <option value="3.65">3.65</option>
+                  <option value="3.70">3.70</option>
+                  <option value="3.75">3.75</option>
+                  <option value="3.80">3.80</option>
+                  <option value="3.85">3.85</option>
+                  <option value="3.90">3.90</option>
+                  <option value="3.95">3.95</option>
+                  <option value="4.00">4.00</option>
+                </select>
+
+                <label for="" class="grey">SAT or ACT</label>
+                <select id="ACT" name="scores" class="styled-select">
+                    <option value="" disabled selected>NA</option>
+                    <option value="25">SAT: 1570 / ACT: 25</option>
+                    <option value="26">SAT: 1530 / ACT: 26</option>
+                    <option value="27">SAT: 1490 / ACT: 27</option>
+                    <option value="28">SAT: 1450 / ACT: 28</option>
+                    <option value="29">SAT: 1420 / ACT: 29</option>
+                    <option value="30">SAT: 1390 / ACT: 30</option>
+                    <option value="31">SAT: 1360 / ACT: 31</option>
+                    <option value="32">SAT: 1330 / ACT: 32</option>
+                    <option value="33">SAT: 1300 / ACT: 33</option>
+                    <option value="34">SAT: 1260 / ACT: 34</option>
+                    <option value="35">SAT: 1230 / ACT: 35</option>
+                    <option value="36">SAT: 1200 / ACT: 36</option>
+                </select>
+
+                <div class='checks' >
+                  <div class='checkLabels'>
+                    <label for="">I'm a member of the church</label>
+                    <input class='member' type="checkbox">              
+                  </div>
+                  <div class='checkLabels'>
+                     <label for="">I'm a returned missionary and returned less than 18 months ago</label>
+                     <input class='missionary' type="checkbox">
+                  </div>
+
+                </div>
+                <div id="calculate">
+                <a class="calculateButton">CALCULATE</a>  
+                </div>
+                
+              </form>
+            </div>
+          </div>
+            <div class="results" >
+            <div class="resultsHeader">
+              <div class="circleContainer">
+                <div class="circle"></div>
+              </div>
+            
+              <p class="bold" style="font-size:.8em">Tuition before scholarship <span class="tuition"></span></p>
+            </div>
+            <div class="breakdown"> 
+              <div class="checkLabels">
+                <p>Merit Scholarship</p>
+                <span class="merit">$0</span>
+              </div>
+              <div class="checkLabels">
+                <p>RM Scholarship</p>  
+                <span class="rMissionary">N/A</span>
+              </div>
+              
+              <hr>
+              <div class="breakdown2">
+                <div class="checkLabels">
+                  <p style="font-size:.9em">Your first semester only costs: </p>  
+                  <span class="firstSemester" style="font-weight:bold"></span>
+                </div>
+                <div class="checkLabels">
+                  <p style="font-size:.9em">Every other semester will cost: </p>  
+                  <span class="otherSemesters"></span>                
+                </div>
+               </div>
+                <div style="display:flex; justify-content:center; margin:10px;">
+                  <a id="startOver" style="text-decoration: underline;">Start Over</a>   
+                </div>
+               
+              
+              
+              
+            </div>
+          </divs>
+        </div>  
+          </div>
+          
+      </div>
+    </main>
+    
+  </body>
+  
