@@ -2,22 +2,17 @@ body{
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: "acumin-pro"
+  font-family: 'Acumin Pro Italic', sans-serif;
 }
 
 :root{
   --primary-color:#006EB6;
   --secondary-color:#A2DAFF;
-  --gray:#ADB5BD;
+  --gray:#656565;
   --bold-gray:#555555;
   --RM-color: #85CEFF;
   --merit-color: #006EB6;
   --total-color: #E6E5E0;
-}
-.inter-font {
-  font-family: "Inter", serif;
-  font-optical-sizing: auto;
-  font-style: normal;
 }
 
 #calculatorScreen{
@@ -47,15 +42,17 @@ body{
   justify-content: center;
   gap: 10px;
 }
+
 .calculatorHeader h1{
   color: #FFFFFF;
 }
+
 .calculator, .results{
   background-color: white;
   display: flex;
   width: 445px;
   height: 633px;
-  padding: 26px 24px;
+  padding: 27px 24px;
   flex-direction: column;
   align-items: flex-start;
   gap: 24px;
@@ -68,18 +65,20 @@ body{
   align-items: center;
   align-self: stretch;
   justify-content: space-evenly;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 0px; /* 0% */
-  letter-spacing: 1.8px;
   text-transform: uppercase;
 }
 
 .calcOpt p{
+  text-align: center;
+  font-feature-settings: 'liga' off, 'clig' off;
   display: flex;
-  padding: 24px;
+  padding-top: 30px;
+  padding-bottom: 18px;
   margin: 0%;
+  font-size: 15px;
+  font-weight: 600;
+  font-style: normal;
+  letter-spacing: 1.8px;
   justify-content: center;
   align-items: center;
   gap: 10px;
@@ -128,34 +127,32 @@ form p{
   margin: 0%;
   text-align: center;
   font-feature-settings: 'liga' off, 'clig' off;
-  font-family: "acumin-pro";
   font-size: 17px;
   font-style: italic;
-  font-weight: 400;
-  line-height: 24px; /* 150% */
+  font-weight: 500;
+  line-height: 27px;
+  height: auto;
+  padding: 0px 4px 0px 4px;
 }
 
 .label{
-  color: var(--black-gray-g-3-body-text, #363636);
+  color: var(#363636);
   font-feature-settings: 'liga' off, 'clig' off;
-  font-family: "acumin-pro";
   font-size: 14px;
   font-style: normal;
-  font-weight: 400;
-  line-height: 24px; /* 171.429% */
+  font-weight: 500;
+  line-height: 24px; 
 }
 
 select, option{
-  /* border-color: var(--gray);
-  border-radius:8px; */
   display: flex;
-  margin-top: 5px;
+  margin-top: 7px;
   /* padding: 8px 16px; */
-  padding: 12px;
+  padding: 13px 8px;
   justify-content: space-between;
   align-items: center;
   flex: 1 0 0;
-  border-radius: 4.8px;
+  border-radius: 4.9px;
   border: 1px solid var(--B1---Brand-Blue, #006EB6);
   background: var(--Color, #FFF);
 }
@@ -221,7 +218,7 @@ select, option{
   color: var(--black-gray-g-4-dark-gray, #656565);
   text-align: center;
   font-feature-settings: 'liga' off, 'clig' off;
-  font-family: "acumin-pro";
+  /* font-family: "Acumin Pro"; */
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
