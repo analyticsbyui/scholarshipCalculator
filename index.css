@@ -2,7 +2,7 @@ body{
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: "Acumin Pro"
+  font-family: "acumin-pro"
 }
 
 :root{
@@ -48,13 +48,21 @@ body{
   gap: 10px;
 }
 .calculatorHeader h1{
-    color: #FFFFFF;
+  color: #FFFFFF;
+}
+.calculator, .results{
+  background-color: white;
+  display: flex;
+  width: 445px;
+  height: 633px;
+  padding: 26px 24px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  border-radius: 12px;
+  background: var(--Gray-100, #F8F9FA);
 }
 
-form{
-  display: flex;
-  flex-direction:column;
-}
 .calcOpt{
   display: flex;
   align-items: center;
@@ -71,6 +79,7 @@ form{
 .calcOpt p{
   display: flex;
   padding: 24px;
+  margin: 0%;
   justify-content: center;
   align-items: center;
   gap: 10px;
@@ -85,7 +94,9 @@ form{
 .grey{
   color: var(--gray);
   font-size: .8em;
-  padding-left: 6px;
+
+}
+.underline{
   border-bottom: 2px solid var(--Gray-500, #ADB5BD);
 }
 .bold{
@@ -98,56 +109,102 @@ form{
   gap: 31px;
 }
 
-.calculator, .results{
-  background-color: white;
+
+.calculatorForm form{
   display: flex;
-  width: 445px;
-  height: 633px;
-  padding: 26px 24px;
+  padding: 0px 12px;
   flex-direction: column;
-  align-items: flex-start;
   gap: 24px;
-  border-radius: 12px;
-  background: var(--Gray-100, #F8F9FA);
+  align-self: stretch;
 }
 
+form label{
+  display: flex;
+  flex-direction: column;
+}
+
+form p{
+  color: var(--black-gray-g-4-dark-gray, #656565);
+  margin: 0%;
+  text-align: center;
+  font-feature-settings: 'liga' off, 'clig' off;
+  font-family: "acumin-pro";
+  font-size: 17px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+}
+
+.label{
+  color: var(--black-gray-g-3-body-text, #363636);
+  font-feature-settings: 'liga' off, 'clig' off;
+  font-family: "acumin-pro";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 171.429% */
+}
 
 select, option{
-  border-color: var(--gray);
-  margin: 5px 0px 15px 0px;
+  /* border-color: var(--gray);
+  border-radius:8px; */
+  display: flex;
+  margin-top: 5px;
+  /* padding: 8px 16px; */
   padding: 12px;
-  border-radius:8px;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1 0 0;
+  border-radius: 4.8px;
+  border: 1px solid var(--B1---Brand-Blue, #006EB6);
+  background: var(--Color, #FFF);
 }
 .checks{
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px;
-  
+  gap: 12px;
+  align-self: stretch;
 }
 .checkLabels{
   display:flex;
   flex-direction: row;
-  align-items: center;
   justify-content: space-between;
-  max-width: 280px;
-  padding: 10px;
-  
+  gap: 50px;
+  padding: 4px 0px;
+  align-items: flex-start;
+  align-self: stretch;
 }
 
 .checkLabels p{
   margin: 0;
 }
 
-#calculate{
+.checkbox{
+  display: flex;
+  width: 24px;
+  min-width: 24px;
+  height: 24px;
+  padding: 2px;
+  justify-content: center;
+  align-items: center;
+}
+
+.calculate{
   display: flex;
   align-items: center;
   justify-content: center;
-  padding:12px;
+  align-self: stretch;
+  /* padding: 12px; */
   background-color:var(--primary-color);
-  border-radius: 5px;
-  border-color:var(--primary-color);
-  margin-bottom: 20px;
-  
+  border-radius: 4.8px;
+  border: 1px solid var(--primary-color);
+  margin-bottom: 24px;
+  margin-top: 24px;  
+
+  height: 34px;
+  padding: 8px 16px;
+  gap: 8px;
+  flex-shrink: 0;
 }
 
 .calculateButton{
@@ -159,6 +216,17 @@ select, option{
   
 }
 
+.statement{
+  align-self: stretch;
+  color: var(--black-gray-g-4-dark-gray, #656565);
+  text-align: center;
+  font-feature-settings: 'liga' off, 'clig' off;
+  font-family: "acumin-pro";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px; /* 133.333% */
+}
 
 .resultsHeader{
   display: flex;
@@ -205,9 +273,9 @@ select, option{
     display: block;
     width:390px;
   }
-  .checkLabels{
+  /* .checkLabels{
     max-width: 390px;
-  }
+  } */
   
   #startOver{
     display: none;
