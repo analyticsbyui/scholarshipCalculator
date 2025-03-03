@@ -2,7 +2,7 @@ body{
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Acumin Pro Italic', sans-serif;
+  font-family: 'Acumin Pro', sans-serif;
 }
 
 :root{
@@ -136,10 +136,9 @@ form p{
 }
 
 .label{
-  color: var(#363636);
+  color: #363636;
   font-feature-settings: 'liga' off, 'clig' off;
-  font-size: 14px;
-  font-style: normal;
+  font-size: 15px;
   font-weight: 500;
   line-height: 24px; 
 }
@@ -147,14 +146,21 @@ form p{
 select, option{
   display: flex;
   margin-top: 7px;
-  /* padding: 8px 16px; */
   padding: 13px 8px;
   justify-content: space-between;
   align-items: center;
   flex: 1 0 0;
   border-radius: 4.9px;
-  border: 1px solid var(--B1---Brand-Blue, #006EB6);
+  /* border: 2px solid #006db67a; */
+  border: .13em solid #006db67a;
   background: var(--Color, #FFF);
+}
+
+.styled-select{
+  font-family: 'Acumin Pro';
+  font-size: 16px;
+  font-weight: 600;
+  color: #ADB5BD;
 }
 .checks{
   display: flex;
