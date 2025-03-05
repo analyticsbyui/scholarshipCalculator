@@ -58,7 +58,7 @@ function setCSSAnimation(meritPercentage, rmPercentage){
 }
 
 function alternateView(){
-    document.querySelector('#calculate').addEventListener("click", ()=>{
+    document.querySelector('.calculate').addEventListener("click", ()=>{
     document.querySelector(".calculator").style.display = "none"
     document.querySelector(".results").style.display = "block"  
   })
@@ -102,7 +102,7 @@ function calculateScholarship(GPA, ACT){
 
 }
 
-document.querySelector('#calculate').addEventListener('click',()=>{
+document.querySelector('.calculate').addEventListener('click',()=>{
   const GPA = document.querySelector('#GPA').value;
   const ACT = document.querySelector('#ACT').value;
   const results =  document.querySelector('.results')

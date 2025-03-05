@@ -6,13 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <!-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet"> -->
-  <link href="https://fonts.cdnfonts.com/css/acumin-pro" rel="stylesheet">            
+  <link href="https://fonts.cdnfonts.com/css/acumin-pro" rel="stylesheet">   
+  <link rel="stylesheet" href="./bootstrap.bundle.min.js">         
   <link rel="stylesheet" href="index.css">
 </head>
 
 
 <body>
-    <main>
+  <main>
       <div>
         <div id="calculatorScreen">
           <div class="calculatorHeader">
@@ -28,24 +29,25 @@
               <form action="">
                 <p>High school graduates going to college for the first time (12+ more credits).</p>
                 <label for="" class=" label">High School GPA
-                <select id="GPA" name="gpa" class="styled-select">
-                  <option value="" disabled selected>Select your GPA</option>
-                  <option value="3.50">3.50</option>
-                  <option value="3.55">3.55</option>
-                  <option value="3.60">3.60</option>
-                  <option value="3.65">3.65</option>
-                  <option value="3.70">3.70</option>
-                  <option value="3.75">3.75</option>
-                  <option value="3.80">3.80</option>
-                  <option value="3.85">3.85</option>
-                  <option value="3.90">3.90</option>
-                  <option value="3.95">3.95</option>
-                  <option value="4.00">4.00</option>
-                </select>
+                  <select id="GPA" name="gpa" class="styled-select">
+                    <option value="" disabled selected>Select your GPA</option>
+                    <option value="3.50">3.50</option>
+                    <option value="3.55">3.55</option>
+                    <option value="3.60">3.60</option>
+                    <option value="3.65">3.65</option>
+                    <option value="3.70">3.70</option>
+                    <option value="3.75">3.75</option>
+                    <option value="3.80">3.80</option>
+                    <option value="3.85">3.85</option>
+                    <option value="3.90">3.90</option>
+                    <option value="3.95">3.95</option>
+                    <option value="4.00">4.00</option>
+                  </select>
                 </label>
-
+                
                 <label for="" class="label">ACT or SAT Score
-                <select id="ACT" name="scores" class="styled-select">
+                  <select id="ACT" name="scores" class="styled-select">
+                    
                     <option value="" disabled selected>Select your Score</option>
                     <option value="25">SAT: 1570 / ACT: 25</option>
                     <option value="26">SAT: 1530 / ACT: 26</option>
@@ -59,38 +61,39 @@
                     <option value="34">SAT: 1260 / ACT: 34</option>
                     <option value="35">SAT: 1230 / ACT: 35</option>
                     <option value="36">SAT: 1200 / ACT: 36</option>
-                </select>
-              </label>
+                  </select>
+                </label>
 
                 <div class='checks' >
                   <div class='checkLabels'>
                     <label for="">I'm a member of the church</label>
-                    <input class='member checkbox' type="checkbox">              
+                    <input class='member checkbox' type="checkbox">  
+                    
                   </div>
                   <div class='checkLabels'>
-                     <label for="">I returned form a mission less than 18 months ago</label>
-                     <input class='missionary checkbox' type="checkbox">
+                    <label for="">I returned form a mission less than 18 months ago</label>
+                    <input class='missionary checkbox' type="checkbox">
                   </div>
-                
-              </form>
+                  
+                </form>
               </div>
               <div class="calculate">
               <a class="calculateButton">CALCULATE</a>  
-              </div>
-              <p class="statement">This calculator is an approximate and not a promise of financial aid. If you are an international student visit the <a href="https://www.byui.edu/financial-aid/">Financial Aid</a> website for more info.</p>
             </div>
+            <p class="statement">This calculator is an approximate and not a promise of financial aid. If you are an international student visit the <a href="https://www.byui.edu/financial-aid/">Financial Aid</a> website for more info.</p>
+          </div>
           </div>
             <div class="results" >
-            <div class="resultsHeader">
-              <div class="circleContainer">
-                <div class="circle"></div>
+              <div class="resultsHeader">
+                <div class="circleContainer">
+                  <div class="circle"></div>
+                </div>
+                
+                <p class="bold" style="font-size:.8em">Tuition before scholarship <span class="tuition"></span></p>
               </div>
-            
-              <p class="bold" style="font-size:.8em">Tuition before scholarship <span class="tuition"></span></p>
-            </div>
-            <div class="breakdown"> 
-              <div class="checkLabels">
-                <p>Merit Scholarship</p>
+              <div class="breakdown"> 
+                <div class="checkLabels">
+                  <p>Merit Scholarship</p>
                 <span class="merit">$0</span>
               </div>
               <div class="checkLabels">
@@ -108,11 +111,11 @@
                   <p style="font-size:.9em">Every other semester will cost: </p>  
                   <span class="otherSemesters"></span>                
                 </div>
-               </div>
-                <div style="display:flex; justify-content:center; margin:10px;">
-                  <a id="startOver" style="text-decoration: underline;">Start Over</a>   
-                </div>
-               
+              </div>
+              <div style="display:flex; justify-content:center; margin:10px;">
+                <a id="startOver" style="text-decoration: underline;">Start Over</a>   
+              </div>
+              
               
               
               
@@ -121,8 +124,9 @@
         </div>  
           </div>
           
-      </div>
+        </div>
     </main>
     
-  </body>
-  
+    <script src="script.js"></script>
+    <!-- <script src="./bootstrap.bundle.min.js"></script> -->
+</body>
