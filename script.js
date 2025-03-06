@@ -27,7 +27,7 @@ function getPercentages(GPA, ACT){
 
 function setCSSAnimation(meritPercentage, rmPercentage){
   
-  const styleSheet = document.styleSheets[1]; 
+  const styleSheet = document.styleSheets[2]; 
 
   // Remove any existing keyframes rule with the same name
   debugger
@@ -105,10 +105,14 @@ function calculateScholarship(GPA, ACT){
 document.querySelector('.calculate').addEventListener('click',()=>{
   const GPA = document.querySelector('#GPA').value;
   const ACT = document.querySelector('#ACT').value;
-  const results =  document.querySelector('.results')
-  const{display} = window.getComputedStyle(results, null)
   calculateScholarship(GPA, ACT)
-  if (display != 'block'){
-    alternateView()
-  }
 })
+
+const results =  document.querySelector('.results')
+const{display} = window.getComputedStyle(results, null)
+if (display != 'block'){
+  alternateView()
+}
+
+
+
