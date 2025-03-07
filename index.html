@@ -23,8 +23,8 @@
         <div class="calculatorContainer">
           <div class="calculator">
             <div class='grey calcOpt'>
-              <p class='current'>FRESHMAN</p>
-              <p class='underline'>TRANSFER STUDENT</p>
+              <p class='freshmanOpt current'>FRESHMAN</p>
+              <p class='transferOpt underline'>TRANSFER STUDENT</p>
             </div>
             <div class="freshman">
               <div class="calculatorForm">
@@ -115,37 +115,55 @@
               <p class="statement">This calculator is an approximate and not a promise of financial aid. If you are an international student visit the <a href="https://www.byui.edu/financial-aid/">Financial Aid</a> website for more info. </p>
             </div>
           </div>
-          <div class="results">
-            <div class="resultsHeader">
-              <div class="circleContainer">
-                <div class="circle"></div>
+          <div class="resultsContainer" >
+            <div class="results hidden">
+              <div class="resultsHeader">
+                <p class="bold" style="font-size:.8em">Tuition before scholarship <span class="tuition"></span>
+                <div class="circleContainer">
+                  <div class="circle"></div>
+                </div>
+                </p>
               </div>
-              <p class="bold" style="font-size:.8em">Tuition before scholarship <span class="tuition"></span>
-              </p>
-            </div>
-            <div class="breakdown">
-              <div class="checkLabels">
-                <p>Merit Scholarship</p>
-                <span class="merit">$0</span>
-              </div>
-              <div class="checkLabels">
-                <p>RM Scholarship</p>
-                <span class="rMissionary">N/A</span>
-              </div>
-              <hr>
-              <div class="breakdown2">
+              <div class="breakdown">
                 <div class="checkLabels">
-                  <p style="font-size:.9em">Your first semester only costs: </p>
-                  <span class="firstSemester" style="font-weight:bold"></span>
+                  <p>Merit Scholarship</p>
+                  <span class="merit">$0</span>
                 </div>
                 <div class="checkLabels">
-                  <p style="font-size:.9em">Every other semester will cost: </p>
-                  <span class="otherSemesters"></span>
+                  <p>RM Scholarship</p>
+                  <span class="rMissionary">N/A</span>
+                </div>
+                <hr>
+                <div class="breakdown2">
+                  <div class="checkLabels">
+                    <p style="font-size:.9em">Your first semester only costs: </p>
+                    <span class="firstSemester" style="font-weight:bold"></span>
+                  </div>
+                  <div class="checkLabels">
+                    <p style="font-size:.9em">Every other semester will cost: </p>
+                    <span class="otherSemesters"></span>
+                  </div>
+                </div>
+                <div style="display:flex; justify-content:center; margin:10px;">
+                  <a id="startOver" style="text-decoration: underline;">Start Over</a>
                 </div>
               </div>
-              <div style="display:flex; justify-content:center; margin:10px;">
-                <a id="startOver" style="text-decoration: underline;">Start Over</a>
-              </div>
+            </div> 
+            <div class="pending">
+              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="41" viewBox="0 0 40 41" fill="none">
+                <g clip-path="url(#clip0_3629_9775)">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M27.5 38C30.1522 38 32.6957 36.9464 34.5711 35.0711C36.4464 33.1957 37.5 30.6522 37.5 28C37.5 25.3478 36.4464 22.8043 34.5711 20.9289C32.6957 19.0536 30.1522 18 27.5 18C24.8478 18 22.3043 19.0536 20.4289 20.9289C18.5536 22.8043 17.5 25.3478 17.5 28C17.5 30.6522 18.5536 33.1957 20.4289 35.0711C22.3043 36.9464 24.8478 38 27.5 38ZM40 28C40 31.3152 38.683 34.4946 36.3388 36.8388C33.9946 39.183 30.8152 40.5 27.5 40.5C24.1848 40.5 21.0054 39.183 18.6612 36.8388C16.317 34.4946 15 31.3152 15 28C15 24.6848 16.317 21.5054 18.6612 19.1612C21.0054 16.817 24.1848 15.5 27.5 15.5C30.8152 15.5 33.9946 16.817 36.3388 19.1612C38.683 21.5054 40 24.6848 40 28Z" fill="#ADB5BD"/>
+                  <path d="M23.595 30.36C23.7125 31.85 24.89 33.01 27.0025 33.15V34.25H27.94V33.1425C30.1275 32.99 31.405 31.82 31.405 30.125C31.405 28.58 30.43 27.785 28.68 27.375L27.94 27.2V24.2C28.88 24.3075 29.475 24.82 29.6175 25.53H31.2625C31.145 24.0925 29.9125 22.97 27.94 22.8475V21.75H27.0025V22.875C25.135 23.0575 23.865 24.18 23.865 25.77C23.865 27.175 24.81 28.07 26.3825 28.435L27.0025 28.5875V31.7675C26.0425 31.6225 25.405 31.0925 25.2625 30.36H23.595ZM26.995 26.975C26.0725 26.7625 25.5725 26.325 25.5725 25.67C25.5725 24.935 26.1125 24.385 27.0025 24.225V26.975H26.995ZM28.075 28.84C29.1975 29.1 29.7125 29.52 29.7125 30.2625C29.7125 31.11 29.07 31.69 27.94 31.7975V28.81L28.075 28.84Z" fill="#ADB5BD"/>
+                  <path d="M2.5 0.5C1.83696 0.5 1.20107 0.763392 0.732233 1.23223C0.263392 1.70107 0 2.33696 0 3V23C0 23.663 0.263392 24.2989 0.732233 24.7678C1.20107 25.2366 1.83696 25.5 2.5 25.5H12.7075C12.8525 24.64 13.07 23.805 13.3525 23H7.5C7.5 21.6739 6.97322 20.4021 6.03553 19.4645C5.09785 18.5268 3.82608 18 2.5 18V8C3.82608 8 5.09785 7.47322 6.03553 6.53553C6.97322 5.59785 7.5 4.32608 7.5 3H32.5C32.5 4.32608 33.0268 5.59785 33.9645 6.53553C34.9021 7.47322 36.1739 8 37.5 8V16.82C38.45 17.67 39.2925 18.64 40 19.705V3C40 2.33696 39.7366 1.70107 39.2678 1.23223C38.7989 0.763392 38.163 0.5 37.5 0.5H2.5Z" fill="#ADB5BD"/>
+                  <path d="M24.995 13.2075L25 13C24.9995 12.139 24.7766 11.2927 24.353 10.5431C23.9294 9.79346 23.3194 9.16594 22.5821 8.72129C21.8448 8.27665 21.0051 8.02994 20.1445 8.00506C19.2838 7.98019 18.4313 8.17798 17.6695 8.5793C16.9077 8.98062 16.2625 9.57186 15.7963 10.2957C15.3301 11.0196 15.0588 11.8517 15.0085 12.7112C14.9583 13.5708 15.1309 14.4287 15.5095 15.202C15.8882 15.9753 16.4602 16.6377 17.17 17.125C19.3294 15.0682 22.0544 13.7039 24.995 13.2075Z" fill="#ADB5BD"/>
+                </g>
+                <defs>
+                  <clipPath id="clip0_3629_9775">
+                    <rect width="40" height="40" fill="white" transform="translate(0 0.5)"/>
+                  </clipPath>
+                </defs>
+              </svg>
+              <p>Enter your GPA and test scores to see what you qualify for!</p>
             </div>
           </div>
         </div>

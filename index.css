@@ -47,8 +47,7 @@ body{
   color: #FFFFFF;
 }
 
-.calculator, .results{
-  background-color: white;
+.calculator, .resultsContainer{
   display: flex;
   width: 445px;
   height: 641px;
@@ -83,6 +82,7 @@ body{
   align-items: center;
   gap: 10px;
   flex: 1 0 0;
+  cursor: pointer;
 }
 
 
@@ -109,7 +109,7 @@ body{
   color: var(--bold-gray);
 }
 
-.calculatorContainer{
+.calculatorContainer, .resultsContainer{
   display: flex;
   align-items: center;
   gap: 31px;
@@ -235,9 +235,22 @@ select, option{
   color: #FFFF;
 }
 
-.results{
-  display:none;
-  
+
+.pending{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-left: 88px;
+  padding-right: 88px;
+  width: auto;
+  height: 100%;
+  color: #ADB5BD;
+}
+
+.resultsContainer{
+  display:none;  
 }
 
 .statement{
@@ -283,7 +296,7 @@ select, option{
     min-width:900px;
     max-width:900px;
   }
-  .calculatorContainer{
+  .calculatorContainer, .resultsContainer{
     display: flex;
     flex-direction: row;
     justify-content:space-between;
@@ -293,9 +306,9 @@ select, option{
     display: block;
     width:390px
   } */
-  .results{
+  .resultsContainer{
     display: block;
-    width:390px;
+
   }
   /* .checkLabels{
     max-width: 390px;

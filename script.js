@@ -102,17 +102,80 @@ function calculateScholarship(GPA, ACT){
 
 }
 
+const results =  document.querySelector('.results')
+const pending =  document.querySelector('.pending')
+
 document.querySelector('.calculate').addEventListener('click',()=>{
   const GPA = document.querySelector('#GPA').value;
   const ACT = document.querySelector('#ACT').value;
+
+  pending.classList.add('hidden')
+  results.classList.remove('hidden')
+
   calculateScholarship(GPA, ACT)
 })
 
-const results =  document.querySelector('.results')
 const{display} = window.getComputedStyle(results, null)
 if (display != 'block'){
   alternateView()
 }
 
+const freshmanCalculator = document.querySelector('.freshman')
+const transferCalculator = document.querySelector('.transfer')
 
+
+let freshmanOpt = document.querySelector('.freshmanOpt')
+let transferOpt = document.querySelector('.transferOpt')
+
+// current.addEventListener('click', ()=>{
+
+//  if (freshmanCalculator.classList.contains('visible')){
+//   freshmanCalculator.classList.add('hidden')
+//   freshmanCalculator.classList.add('underline')
+//   freshmanCalculator.classList.remove('current')
+//   transferCalculator.classList.add('visible')
+//   transferCalculator.classList.add('current')
+//   transferCalculator.classList.remove('underline')
+
+
+//  }else{
+//   freshmanCalculator.classList.add('visible')
+//   freshmanCalculator.classList.add('current')
+//   freshmanCalculator.classList.remove('underline')
+//   transferCalculator.classList.add('hidden')
+//   freshmanCalculator.classList.add('underline')
+//   freshmanCalculator.classList.remove('current')
+//  }
+
+
+// })
+
+transferOpt.addEventListener('click', ()=>{
+  
+
+ if (!freshmanCalculator.classList.contains('hidden')){
+
+  transferOpt.classList.add('current')
+  freshmanOpt.classList.add('underline')
+  freshmanOpt.classList.remove('current')
+  transferOpt.classList.remove('underline')
+
+  freshmanCalculator.classList.add('hidden')
+  transferCalculator.classList.remove('hidden')
+
+ }
+
+})
+
+
+freshmanOpt.addEventListener('click', ()=>{
+  freshmanOpt.classList.add('current')
+  transferOpt.classList.add('underline')
+  transferOpt.classList.remove('current')
+  freshmanOpt.classList.remove('underline')
+
+
+  transferCalculator.classList.add('hidden')
+  freshmanCalculator.classList.remove('hidden')
+})
 
