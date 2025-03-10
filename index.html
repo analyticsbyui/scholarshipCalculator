@@ -28,7 +28,7 @@
             </div>
             <div class="freshman">
               <div class="calculatorForm">
-                <form>
+                <form id="calculatorForm">
                   <p>High school graduates going to college for the first time (12+ more credits).</p>
                   <label class=" label">High School GPA <select id="GPA" name="gpa" class="styled-select">
                       <option value="" disabled selected>Select your GPA</option>
@@ -118,34 +118,47 @@
           <div class="resultsContainer" >
             <div class="results hidden">
               <div class="resultsHeader">
-                <p class="bold" style="font-size:.8em">Tuition before scholarship <span class="tuition"></span>
+                <h4>Cost of Tuition <span class="tuition" style="font-weight: bold;"></span></h4>
                 <div class="circleContainer">
                   <div class="circle"></div>
                 </div>
-                </p>
               </div>
               <div class="breakdown">
                 <div class="checkLabels">
-                  <p>Merit Scholarship</p>
-                  <span class="merit">$0</span>
+                  <div class="leftSide">
+                    <div class="colorMerit"></div>
+                    <div class="description">
+                      <p>Merit Scholarship</p>
+                      <p style="font-size: .8rem; font-style: italic;" >(every semester)</p>
+                    </div>
+                  </div>
+                  <span style="font-weight:bold;" class="dollars merit">$0</span>
                 </div>
                 <div class="checkLabels">
-                  <p>RM Scholarship</p>
-                  <span class="rMissionary">N/A</span>
+                  <div class="leftSide">
+
+                    <div class="colorRMissionary"></div>
+                    <div class="description">
+                      <p>Return Missionary Scholarship</p>
+                      <p style="font-size: .8rem; font-style: italic;">(one semester only)</p>
+                    </div>
+                  </div>
+                  <span style="font-weight:bold;" class="dollars rMissionary">$0</span>
                 </div>
                 <hr>
                 <div class="breakdown2">
                   <div class="checkLabels">
-                    <p style="font-size:.9em">Your first semester only costs: </p>
-                    <span class="firstSemester" style="font-weight:bold"></span>
+                    <p style="font-weight:bold;">Tuition Balance <span style="font-weight:normal;">(You Pay)</span> </p>
+                    <span class="dollars balance" style="font-weight:bold">$0</span>
                   </div>
                   <div class="checkLabels">
-                    <p style="font-size:.9em">Every other semester will cost: </p>
-                    <span class="otherSemesters"></span>
+                    <p style="font-weight:bold;">Excess <span style="font-weight:normal;">(You Pocket)</span> </p>
+                    <span class="dollars excess">$0</span>
                   </div>
                 </div>
-                <div style="display:flex; justify-content:center; margin:10px;">
-                  <a id="startOver" style="text-decoration: underline;">Start Over</a>
+                <div style="display:flex; flex-direction: column; align-items: center; justify-content:center; margin:10px;">
+                  <a id="startOver">START OVER</a>
+                  <p class="statement">Additional aid from the government may be available to you. Please see the <a href="https://www.byui.edu/financial-aid/">Financial Aid</a> website for details.</p>
                 </div>
               </div>
             </div> 

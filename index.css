@@ -161,7 +161,8 @@ select, option{
   border-radius: 4.9px;
   border: .13em solid #006db67a;
   background:  #FFF;
-  background: url(http://www.w3.org/2000/svg) right;
+  cursor: pointer;
+
 
   
 }
@@ -205,6 +206,7 @@ select, option{
   justify-content: center;
   align-items: center;
   accent-color: #006EB6;
+  cursor: pointer;
 }
 
 .calculate{
@@ -221,6 +223,7 @@ select, option{
   padding: 8px 16px;
   gap: 8px;
   flex-shrink: 0;
+  cursor: pointer;
 }
 .calculate a{
   font-feature-settings: 'liga' off, 'clig' off;
@@ -250,6 +253,7 @@ select, option{
 }
 
 .resultsContainer{
+  padding: 26px 24px;
   display:none;  
 }
 
@@ -270,6 +274,24 @@ select, option{
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin: 15px;
+
+}
+
+.resultsHeader h4{
+  margin: 0;
+  color: #656565;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; }
+
+.tuition{
+  color: #656565;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
 }
 
 .breakdown{
@@ -278,20 +300,57 @@ select, option{
 
 .breakdown2{
   display: flex;
+  gap: 8px;
   flex-direction: column;
   margin-bottom: 20px;
+  margin-top: 25px;
 }
-.merit{
+.leftSide{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+}
+
+.description{
+  line-height: 21px;
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+.colorMerit{
+  background-color: var(--merit-color);
+  width: 12px;
+  height: 12px;
+}
+.colorRMissionary{
+  background-color: var(--RM-color);
+  width: 12px;
+  height: 12px;
+}
+
+.dollars{
+  color: #363636;
+  font-size: 23px;
+  font-weight: 700;
+  line-height: 39px;
+}
+
+.balance{
   color: var(--merit-color);
-  font-weight: bold;
 }
 
-.rMissionary{
-  color: var(--RM-color);
-  font-weight: bold;
+#startOver{
+  padding-bottom: 2%;
+  color: #343A40;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  border-bottom: 1px solid;
+  cursor: pointer;
 }
 
-@media screen and (min-width: 832px){
+
+@media screen and (min-width: 1000px){
   #calculatorScreen{
     min-width:900px;
     max-width:900px;
@@ -314,9 +373,6 @@ select, option{
     max-width: 390px;
   } */
   
-  #startOver{
-    display: none;
-  }
   
 }
 
@@ -361,7 +417,7 @@ select, option{
   );
   animation: progress 2s linear 1 forwards;
   border-radius: 50%;
-  mask: radial-gradient(circle at center, transparent 60%, black 60%);
+  mask: radial-gradient(circle at center, transparent 55%, black 55%);
   position: absolute;
   inset: 0;
 }
@@ -370,7 +426,7 @@ select, option{
   filter: drop-shadow(0 0 0.8vmin hsla(0, 0, 0%, 1));
   position: relative;
   width: 200px;
-  margin: 25px;
+  margin: 15px;
   aspect-ratio: 1;
 
   &:after {

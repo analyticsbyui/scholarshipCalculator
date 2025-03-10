@@ -30,7 +30,6 @@ function setCSSAnimation(meritPercentage, rmPercentage){
   const styleSheet = document.styleSheets[2]; 
 
   // Remove any existing keyframes rule with the same name
-  debugger
   for (let i = 0; i < styleSheet.cssRules.length; i++) {
     if (styleSheet.cssRules[i].name === 'progress') {
       styleSheet.deleteRule(i);
@@ -57,18 +56,18 @@ function setCSSAnimation(meritPercentage, rmPercentage){
 
 }
 
-function alternateView(){
-    document.querySelector('.calculate').addEventListener("click", ()=>{
-    document.querySelector(".calculator").style.display = "none"
-    document.querySelector(".results").style.display = "block"  
-  })
+// function alternateView(){
+//     document.querySelector('.calculate').addEventListener("click", ()=>{
+//     document.querySelector(".calculator").style.display = "none"
+//     document.querySelector(".results").style.display = "block"  
+//   })
 
 
-  document.querySelector('#startOver').addEventListener("click", ()=>{
-    document.querySelector(".calculator").style.display = "block"
-    document.querySelector(".results").style.display = "none"  
-  })
-}
+//   document.querySelector('#startOver').addEventListener("click", ()=>{
+//     document.querySelector(".calculator").style.display = "block"
+//     document.querySelector(".results").style.display = "none"  
+//   })
+// }
 
 function calculateScholarship(GPA, ACT){
   const member = document.querySelector(".member").checked
@@ -83,7 +82,8 @@ function calculateScholarship(GPA, ACT){
   const rmPercentage = (rMissionary * tuitionPercentage)/tuition
 
   let totalPay = tuition - merit - rMissionary
-  let otherSemesters = tuition - merit
+  let balance = (totalPay > 0) ? totalPay : 0
+  let excess = (totalPay < 0) ? totalPay * -1 : 0
   
   
   const circle = document.querySelector('.circle');
@@ -93,11 +93,11 @@ function calculateScholarship(GPA, ACT){
 
   setCSSAnimation(meritPercentage, rmPercentage)
 
-  document.querySelector(".tuition").innerText = `$${tuition}`
-  document.querySelector(".merit").innerText = `$${merit}`
-  document.querySelector(".rMissionary").innerText = `$${rMissionary}`
-  document.querySelector(".firstSemester").innerText = `$${totalPay}`
-  document.querySelector(".otherSemesters").innerText = `$${otherSemesters}`
+  document.querySelector(".tuition").innerText = `$${tuition.toLocaleString()}`
+  document.querySelector(".merit").innerText = `$${merit.toLocaleString()}`
+  document.querySelector(".rMissionary").innerText = `$${rMissionary.toLocaleString()}`
+  document.querySelector(".balance").innerText = `$${balance.toLocaleString()}`
+  document.querySelector(".excess").innerText = `$${excess.toLocaleString()}`
 
 
 }
@@ -113,12 +113,26 @@ document.querySelector('.calculate').addEventListener('click',()=>{
   results.classList.remove('hidden')
 
   calculateScholarship(GPA, ACT)
+  
+
+  if (document.querySelector(".resultsContainer").style.display != block){
+    document.querySelector(".calculator").style.display = "none"
+    document.querySelector(".resultsContainer").style.display = "block"
+  }
 })
 
-const{display} = window.getComputedStyle(results, null)
-if (display != 'block'){
-  alternateView()
-}
+
+document.querySelector('#startOver').addEventListener("click", ()=>{
+  if (document.querySelector(".resultsContainer").style.display != ""){
+    document.querySelector(".calculator").style.display = "block"
+    document.querySelector(".resultsContainer").style.display = "none"  
+  }else{
+    results.classList.add('hidden')
+    pending.classList.remove('hidden')
+  }
+
+  document.getElementById('calculatorForm').reset()
+})
 
 const freshmanCalculator = document.querySelector('.freshman')
 const transferCalculator = document.querySelector('.transfer')
