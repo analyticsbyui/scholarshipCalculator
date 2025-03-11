@@ -51,29 +51,31 @@ function setCSSAnimation(meritPercentage, rmPercentage){
     }
   `;
 
-      // Inject the new keyframes rule
-      styleSheet.insertRule(keyframesRule, styleSheet.cssRules.length);
+  // Inject the new keyframes rule
+  styleSheet.insertRule(keyframesRule, styleSheet.cssRules.length);
 
 }
 
-// function alternateView(){
-//     document.querySelector('.calculate').addEventListener("click", ()=>{
-//     document.querySelector(".calculator").style.display = "none"
-//     document.querySelector(".results").style.display = "block"  
-//   })
+function resetAnimation(element) {
+  element.style.animation = 'none'; 
+  element.offsetHeight; 
+  element.style.setProperty('--tuition', '0%');
+  element.style.setProperty('--merit', '0%');
+  element.style.setProperty('--RM', '0%');
+  document.querySelector(".results").style.height = ""
 
 
-//   document.querySelector('#startOver').addEventListener("click", ()=>{
-//     document.querySelector(".calculator").style.display = "block"
-//     document.querySelector(".results").style.display = "none"  
-//   })
-// }
+}
+
 
 function calculateScholarship(GPA, ACT){
   const member = document.querySelector(".member").checked
   const missionary = document.querySelector('.missionary').checked
-
   
+  document.querySelector(".rMissionaryLabel").style.display = (!missionary)? 'none': 'flex'
+  document.querySelector(".excessLabel").style.display = (!missionary)? 'none': 'flex'
+ 
+
   const tuition = (member) ? 2400 : 4800
   const tuitionPercentage = 100
   const meritPercentage = getPercentages(GPA,ACT)
@@ -90,6 +92,7 @@ function calculateScholarship(GPA, ACT){
   circle.style.setProperty('--tuition', `${meritPercentage}%`);
   circle.style.setProperty('--merit', `${meritPercentage}%`);
   circle.style.setProperty('--RM', `${rmPercentage}%`);
+  circle.style.animation = ''; 
 
   setCSSAnimation(meritPercentage, rmPercentage)
 
@@ -97,7 +100,14 @@ function calculateScholarship(GPA, ACT){
   document.querySelector(".merit").innerText = `$${merit.toLocaleString()}`
   document.querySelector(".rMissionary").innerText = `$${rMissionary.toLocaleString()}`
   document.querySelector(".balance").innerText = `$${balance.toLocaleString()}`
-  document.querySelector(".excess").innerText = `$${excess.toLocaleString()}`
+  if (excess){
+    document.querySelector(".excessLabel").style.display = 'flex'
+    document.querySelector(".excess").innerText = `$${excess.toLocaleString()}`
+  }else{
+    document.querySelector(".excessLabel").style.display = 'none'
+  }
+  document.querySelector(".totalScholarships").innerText = `$${(merit + rMissionary).toLocaleString()}`
+
 
 
 }
@@ -111,18 +121,22 @@ document.querySelector('.calculate').addEventListener('click',()=>{
 
   pending.classList.add('hidden')
   results.classList.remove('hidden')
-
+  document.querySelector(".results").style.height = "100%"
   calculateScholarship(GPA, ACT)
-  
 
-  if (document.querySelector(".resultsContainer").style.display != block){
+  if (document.querySelector(".resultsContainer").style.display != ""){
     document.querySelector(".calculator").style.display = "none"
     document.querySelector(".resultsContainer").style.display = "block"
   }
+
 })
 
 
 document.querySelector('#startOver').addEventListener("click", ()=>{
+
+  document.getElementById('calculatorForm').reset()
+  resetAnimation(document.querySelector('.circle'))
+
   if (document.querySelector(".resultsContainer").style.display != ""){
     document.querySelector(".calculator").style.display = "block"
     document.querySelector(".resultsContainer").style.display = "none"  
@@ -130,8 +144,6 @@ document.querySelector('#startOver').addEventListener("click", ()=>{
     results.classList.add('hidden')
     pending.classList.remove('hidden')
   }
-
-  document.getElementById('calculatorForm').reset()
 })
 
 const freshmanCalculator = document.querySelector('.freshman')
@@ -141,28 +153,6 @@ const transferCalculator = document.querySelector('.transfer')
 let freshmanOpt = document.querySelector('.freshmanOpt')
 let transferOpt = document.querySelector('.transferOpt')
 
-// current.addEventListener('click', ()=>{
-
-//  if (freshmanCalculator.classList.contains('visible')){
-//   freshmanCalculator.classList.add('hidden')
-//   freshmanCalculator.classList.add('underline')
-//   freshmanCalculator.classList.remove('current')
-//   transferCalculator.classList.add('visible')
-//   transferCalculator.classList.add('current')
-//   transferCalculator.classList.remove('underline')
-
-
-//  }else{
-//   freshmanCalculator.classList.add('visible')
-//   freshmanCalculator.classList.add('current')
-//   freshmanCalculator.classList.remove('underline')
-//   transferCalculator.classList.add('hidden')
-//   freshmanCalculator.classList.add('underline')
-//   freshmanCalculator.classList.remove('current')
-//  }
-
-
-// })
 
 transferOpt.addEventListener('click', ()=>{
   
