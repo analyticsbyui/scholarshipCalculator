@@ -116,20 +116,28 @@ const results =  document.querySelector('.results')
 const pending =  document.querySelector('.pending')
 
 document.querySelector('.calculate').addEventListener('click',()=>{
+  resetAnimation(document.querySelector('.circle'))
   const GPA = document.querySelector('#GPA').value;
   const ACT = document.querySelector('#ACT').value;
 
   pending.classList.add('hidden')
   results.classList.remove('hidden')
   document.querySelector(".results").style.height = "100%"
+  document.querySelector(".results").style.width = "100%"
   calculateScholarship(GPA, ACT)
 
-  if (document.querySelector(".resultsContainer").style.display != ""){
-    document.querySelector(".calculator").style.display = "none"
-    document.querySelector(".resultsContainer").style.display = "block"
+  if (document.querySelector(".resultsContainer").classList.contains('hidden')){
+    document.querySelector(".calculator").classList.add('hidden')
+    document.querySelector(".resultsContainer").classList.remove('hidden')
   }
 
 })
+
+if (window.innerWidth >= 1000){
+  document.querySelector(".resultsContainer").classList.remove('hidden')
+} else{
+  document.querySelector(".resultsContainer").classList.add('hidden')
+}
 
 
 document.querySelector('#startOver').addEventListener("click", ()=>{
@@ -137,8 +145,8 @@ document.querySelector('#startOver').addEventListener("click", ()=>{
   document.getElementById('calculatorForm').reset()
   resetAnimation(document.querySelector('.circle'))
 
-  if (document.querySelector(".resultsContainer").style.display != ""){
-    document.querySelector(".calculator").style.display = "block"
+  if (document.querySelector(".calculator").classList.contains('hidden')){
+    document.querySelector(".calculator").classList.remove('hidden')
     document.querySelector(".resultsContainer").style.display = "none"  
   }else{
     results.classList.add('hidden')
