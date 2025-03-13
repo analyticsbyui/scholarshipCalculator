@@ -18,11 +18,26 @@ let scholarshipMatrix = [
     [25, 25, 25, 25, 25,  0,  0,  0,  0,  0,  0]   //12
 ]
 
+let gpaColsTransfer = {
+  "3.75 - 3.899": 0, 
+  "3.90 - 3.95": 1,
+  "3.95 - 4.0": 2, 
+}
+
+let scholarshipTransferStudents = [
+  100, 50, 25
+]
+
 function getPercentages(GPA, ACT){
   let row = actRows[ACT]
   let col = gpaCols[GPA]
   
   return scholarshipMatrix[row][col]
+}
+function getPercentagesTransfer(GPA){
+  let index = gpaColsTransfer[GPA]
+  
+  return scholarshipTransferStudents[index]
 }
 
 function setCSSAnimation(meritPercentage, rmPercentage){
@@ -111,6 +126,49 @@ function calculateScholarship(GPA, ACT){
 
 
 }
+function calculateScholarshipTransfer(GPA){
+  const member = document.querySelector(".member").checked
+  const missionary = document.querySelector('.missionary').checked
+  
+  document.querySelector(".rMissionaryLabel").style.display = (!missionary)? 'none': 'flex'
+  document.querySelector(".excessLabel").style.display = (!missionary)? 'none': 'flex'
+ 
+
+  const tuition = (member) ? 2400 : 4800
+  const tuitionPercentage = 100
+  const meritPercentage = getPercentagesTransfer(GPA,ACT)
+  const merit =  (meritPercentage * tuition)/tuitionPercentage
+  const rMissionary = (missionary) ? 1000 : 0
+  const rmPercentage = (rMissionary * tuitionPercentage)/tuition
+
+  let totalPay = tuition - merit - rMissionary
+  let balance = (totalPay > 0) ? totalPay : 0
+  let excess = (totalPay < 0) ? totalPay * -1 : 0
+  
+  
+  const circle = document.querySelector('.circle');
+  circle.style.setProperty('--tuition', `${meritPercentage}%`);
+  circle.style.setProperty('--merit', `${meritPercentage}%`);
+  circle.style.setProperty('--RM', `${rmPercentage}%`);
+  circle.style.animation = ''; 
+
+  setCSSAnimation(meritPercentage, rmPercentage)
+
+  document.querySelector(".tuition").innerText = `$${tuition.toLocaleString()}`
+  document.querySelector(".merit").innerText = `$${merit.toLocaleString()}`
+  document.querySelector(".rMissionary").innerText = `$${rMissionary.toLocaleString()}`
+  document.querySelector(".balance").innerText = `$${balance.toLocaleString()}`
+  if (excess){
+    document.querySelector(".excessLabel").style.display = 'flex'
+    document.querySelector(".excess").innerText = `$${excess.toLocaleString()}`
+  }else{
+    document.querySelector(".excessLabel").style.display = 'none'
+  }
+  document.querySelector(".totalScholarships").innerText = `$${(merit + rMissionary).toLocaleString()}`
+
+
+
+}
 
 const results =  document.querySelector('.results')
 const pending =  document.querySelector('.pending')
@@ -125,6 +183,24 @@ document.querySelector('.calculate').addEventListener('click',()=>{
   document.querySelector(".results").style.height = "100%"
   document.querySelector(".results").style.width = "100%"
   calculateScholarship(GPA, ACT)
+
+  if (document.querySelector(".resultsContainer").classList.contains('hidden')){
+    document.querySelector(".calculator").classList.add('hidden')
+    document.querySelector(".resultsContainer").classList.remove('hidden')
+  }
+
+})
+
+
+document.querySelector('.calculateTransfer').addEventListener('click',()=>{
+  resetAnimation(document.querySelector('.circle'))
+  const GPA = document.querySelector('#GPATransfer').value;
+  debugger
+  pending.classList.add('hidden')
+  results.classList.remove('hidden')
+  document.querySelector(".results").style.height = "100%"
+  document.querySelector(".results").style.width = "100%"
+  calculateScholarshipTransfer(GPA)
 
   if (document.querySelector(".resultsContainer").classList.contains('hidden')){
     document.querySelector(".calculator").classList.add('hidden')
