@@ -170,8 +170,22 @@ function calculateScholarshipTransfer(GPA){
 
 }
 
+
+
+function handleSmallWindowStartOver(){
+
+  calculator.classList.add('hidden')
+  resultsContainer.classList.remove('hidden')
+  resultsContainer.style.height = '37em';
+  resultsContainer.style.width = '20em';
+  resultsContainer.style.visibility = 'visible'
+
+}
+
 const results =  document.querySelector('.results')
 const pending =  document.querySelector('.pending')
+const resultsContainer = document.querySelector(".resultsContainer")
+const calculator = document.querySelector(".calculator")
 
 document.querySelector('.calculate').addEventListener('click',()=>{
   resetAnimation(document.querySelector('.circle'))
@@ -184,36 +198,35 @@ document.querySelector('.calculate').addEventListener('click',()=>{
   document.querySelector(".results").style.width = "100%"
   calculateScholarship(GPA, ACT)
 
-  if (document.querySelector(".resultsContainer").classList.contains('hidden')){
-    document.querySelector(".calculator").classList.add('hidden')
-    document.querySelector(".resultsContainer").classList.remove('hidden')
+  if (resultsContainer.classList.contains('hidden')){
+    calculator.classList.add('hidden')
+    resultsContainer.classList.remove('hidden')
   }
-
+  if(window.innerWidth < 1000){
+    handleSmallWindowStartOver()
+  }
 })
 
 
 document.querySelector('.calculateTransfer').addEventListener('click',()=>{
   resetAnimation(document.querySelector('.circle'))
   const GPA = document.querySelector('#GPATransfer').value;
-  debugger
   pending.classList.add('hidden')
   results.classList.remove('hidden')
   document.querySelector(".results").style.height = "100%"
   document.querySelector(".results").style.width = "100%"
   calculateScholarshipTransfer(GPA)
 
-  if (document.querySelector(".resultsContainer").classList.contains('hidden')){
-    document.querySelector(".calculator").classList.add('hidden')
-    document.querySelector(".resultsContainer").classList.remove('hidden')
+  if (resultsContainer.classList.contains('hidden')){
+    calculator.classList.add('hidden')
+    resultsContainer.classList.remove('hidden')
   }
-
+  if(window.innerWidth < 1000){
+    handleSmallWindowStartOver()
+  }
 })
 
-if (window.innerWidth >= 1000){
-  document.querySelector(".resultsContainer").classList.remove('hidden')
-} else{
-  document.querySelector(".resultsContainer").classList.add('hidden')
-}
+
 
 
 document.querySelector('#startOver').addEventListener("click", ()=>{
@@ -221,12 +234,21 @@ document.querySelector('#startOver').addEventListener("click", ()=>{
   document.getElementById('calculatorForm').reset()
   resetAnimation(document.querySelector('.circle'))
 
-  if (document.querySelector(".calculator").classList.contains('hidden')){
-    document.querySelector(".calculator").classList.remove('hidden')
-    document.querySelector(".resultsContainer").style.display = "none"  
+  if (calculator.classList.contains('hidden')){
+    calculator.classList.remove('hidden')
+    resultsContainer.classList.add('hidden')
   }else{
     results.classList.add('hidden')
     pending.classList.remove('hidden')
+  }
+
+  if(window.innerWidth < 1000){
+    resultsContainer.style.visibility = 'hidden' 
+    // calculator.classList.add('hidden')
+    // resultsContainer.style.visibility = 'visible'
+    // resultsContainer.classList.remove('hidden')
+    resultsContainer.style.height = '0';
+    resultsContainer.style.width = '0';
   }
 })
 

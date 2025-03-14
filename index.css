@@ -39,18 +39,18 @@ body{
 
 .calculator, .resultsContainer{
   display: flex;
-  width: 312px;
-  height: 563px;
+  width: 20em;
+  height: 35em;
   padding: 27px 24px;
   flex-direction: column;
   align-items: flex-start;
   border-radius: 12px;
   background: #F8F9FA;
 }
-.calculator{
+/* .calculator{
   gap: 24px;
 
-}
+} */
 
 .calcOpt{
   display: flex;
@@ -103,7 +103,15 @@ body{
   gap: 15px;
 }
 
+.freshman{
+  margin-top: 1.5em;
+  height: 100%;
 
+}
+
+.transfer{
+  height: 100%;
+}
 .calculatorForm form{
   display: flex;
   padding: 0px 12px;
@@ -147,18 +155,31 @@ select, option{
   border-radius: 4.9px;
   border: .12em solid #006db67a;
   background:  #FFF;
+  width: 100%;
   cursor: pointer;
-
-
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   
 }
-
+.custom-dropdown {
+  position: relative;
+  display: inline-block;
+}
 .styled-select{
   font-family: 'Acumin Pro';
   font-size: 16px;
-  font-weight: 600 !important;
   color: #ADB5BD;
 }
+
+.dropdown-arrow {
+  position: absolute;
+  right: 15px;
+  top: 55%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
 .checks{
   color: #656565;
   display: flex;
