@@ -1,0 +1,1073 @@
+
+<body>
+  <style>
+
+    body{
+
+    font-family: 'Acumin Pro Italic', sans-serif;
+    }
+
+    :root{
+      --primary-color:#006EB6;
+      --secondary-color:#A2DAFF;
+      --gray:#656565;
+      --bold-gray:#555555;
+      --RM-color: #85CEFF;
+      --merit-color: #006EB6;
+      --total-color: #E6E5E0;
+    }
+
+    #calculatorScreen{
+      background-color: #006EB6;
+      display: flex;
+      width: 100%;
+      padding-top: 3%;
+      padding-bottom: 3%;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 31px;
+    }
+
+    .calculatorHeader{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .calculatorHeader h1{
+      color: #FFFFFF;
+    }
+
+    .calculator, .resultsContainer{
+      display: flex;
+      width: 20em;
+      height: 35em;
+      padding: 27px 24px;
+      flex-direction: column;
+      align-items: flex-start;
+      border-radius: 12px;
+      background: #F8F9FA;
+    }
+
+    .calcOpt{
+      display: flex;
+      align-items: center;
+      align-self: stretch;
+      justify-content: space-evenly;
+      text-transform: uppercase;
+    }
+
+    .calcOpt p{
+      text-align: center;
+      display: flex;
+      padding-top: 8px;
+      padding-bottom: 18px;
+      margin: 0%;
+      font-size: 14px;
+      font-weight: 600;
+      font-style: normal;
+      letter-spacing: .6px;
+      justify-content: center;
+      align-items: center;
+      flex: 1 0 0;
+      cursor: pointer;
+    }
+
+
+    .current{
+      color: var(--primary-color);
+      border-bottom: 5px solid #006EB6;
+    }
+
+    .grey{
+      color: var(--gray);
+      font-size: .8em;
+    }
+    .underline{
+      border-bottom: 2px solid #ADB5BD;
+    }
+    .bold{
+      color: var(--bold-gray);
+    }
+
+    .resultsContainer{
+      display: flex;
+      align-items: center;
+    }
+
+    .calculatorContainer{
+      gap: 15px;
+    }
+
+    .freshman{
+      margin-top: 1.5em;
+      height: 100%;
+
+    }
+
+    .transfer{
+      height: 100%;
+    }
+    .calculatorForm form{
+      display: flex;
+      padding: 0px 12px;
+      flex-direction: column;
+      gap: 22px;
+      align-self: stretch;
+    }
+
+    form label{
+      display: flex;
+      flex-direction: column;
+    }
+
+    form p{
+      color:  #656565;
+      margin: 0%;
+      text-align: center;
+      font-size: 15px;
+      font-style: italic;
+      font-weight: lighter;
+      line-height: 22px;
+      height: auto;
+      padding: 0px 4px 0px 4px;
+    }
+
+    .label{
+      color: #363636;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 24px; 
+    }
+
+
+    select, option{
+      display: flex;
+      margin-top: 8px;
+      padding: 9px 8px;
+      justify-content: space-between;
+      align-items: center;
+      flex: 1 0 0;
+      border-radius: 4.9px;
+      border: .12em solid #006db67a;
+      background:  #FFF;
+      width: 100%;
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
+    .custom-dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .styled-select{
+      font-family: 'Acumin Pro';
+      font-size: 16px;
+      color: #ADB5BD;
+    }
+
+    .dropdown-arrow {
+      position: absolute;
+      right: 15px;
+      top: 55%;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+
+    .checks{
+      color: #656565;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-self: stretch;
+      margin-top: 5px;
+      margin-bottom: 7px;
+    }
+    .checkLabels{
+      display:flex;
+      flex-direction: row;
+      justify-content: space-between;
+      font-size: 14px;
+      gap: 20px;
+      padding: 4px 0px;
+      align-items: flex-start;
+      align-self: stretch;
+    }
+
+    .checkLabels p{
+      margin: 0;
+    }
+
+    .checkbox{
+      display: flex;
+      width: 24px;
+      min-width: 24px;
+      height: 19px;
+      padding: 2px;
+      justify-content: center;
+      align-items: center;
+      accent-color: #006EB6;
+      cursor: pointer;
+    }
+
+    .calculate, .calculateTransfer{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      align-self: stretch;
+      background-color:var(--primary-color);
+      border-radius: 4.8px;
+      border: 1px solid var(--primary-color);
+      margin-bottom: 24px;
+      margin-top: 24px;  
+      height: 30px;
+      padding: 8px 16px;
+      gap: 8px;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+    .calculate, .calculateTransfer a{
+      font-size: 13px;
+      font-style: normal;
+      font-weight: 300;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+    }
+
+    .calculateButton{
+      color: #FFFF;
+    }
+
+
+    .pending{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding-left: 88px;
+      padding-right: 88px;
+      width: auto;
+      height: 100%;
+      color: #ADB5BD;
+    }
+
+    .resultsContainer{
+      visibility: hidden;
+      width: 0;
+      height: 0;
+      padding: 26px 24px;
+    }
+
+    .results{
+      position: relative;
+
+    }
+    .statement{
+      align-self: stretch;
+      color:  #656565;
+      text-align: center;
+      font-feature-settings: 'liga' off, 'clig' off;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 16px; 
+      margin-bottom: 2px;
+    }
+
+    .resultsHeader{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 15px;
+
+    }
+
+    .resultsHeader h4{
+      margin: 0;
+      color: #656565;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 24px; 
+    }
+
+    .tuition{
+      color: #656565;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 24px;
+    }
+
+    .breakdown{
+      color: var(--bold-gray); 
+    }
+
+    .breakdown2{
+      display: flex;
+      gap: 8px;
+      flex-direction: column;
+      margin-bottom: 20px;
+      margin-top: 25px;
+    }
+    .leftSide{
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .description{
+      line-height: 21px;
+      margin-top: 7px;
+      margin-bottom: 7px;
+    }
+    .colorMerit{
+      background-color: var(--merit-color);
+      width: 12px;
+      height: 12px;
+    }
+    .colorRMissionary{
+      background-color: var(--RM-color);
+      width: 12px;
+      height: 12px;
+    }
+
+    .dollars{
+      color: #363636;
+      font-size: 23px;
+      font-weight: 700;
+      line-height: 39px;
+    }
+
+    .balance{
+      color: var(--merit-color);
+    }
+    .startOverContainer{ 
+      display: flex;
+      position: absolute;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 10px;
+      bottom: 0;
+      left: 0;
+    } 
+
+    #startOver{
+      padding-bottom: 2%;
+      color: #343A40;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      border-bottom: 1px solid;
+      cursor: pointer;
+    }
+
+
+    @media screen and (min-width: 1000px){
+
+      .calculatorContainer{
+        display: flex;
+        flex-direction: row;
+        justify-content:space-between;
+        margin:  31px;
+      }
+
+      .calculator{
+        width: 445px;
+        height: 641px;
+      }
+
+      .resultsContainer{
+        visibility: visible;
+        width: 445px;
+        height: 641px;
+      }
+
+      .calcOpt p{
+        text-align: center;
+        display: flex;
+        padding-top: 28px;
+        padding-bottom: 18px;
+        margin: 0%;
+        font-size: 15px;
+        font-weight: 600;
+        font-style: normal;
+        letter-spacing: 1.8px;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        flex: 1 0 0;
+        cursor: pointer;
+      }
+
+      .calculatorForm form{
+        padding: 0px 12px;
+        gap: 24px;
+      }
+
+
+      form p{
+        font-size: 18px;
+        line-height: 27px;
+        height: auto;
+        padding: 0px 4px 0px 4px;
+      }
+
+      .label{
+        font-size: 15px;
+      }
+      select, option{
+        display: flex;
+        margin-top: 8px;
+        padding: 13px 8px;
+        flex: 1 0 0;
+        border: .13em solid #006db67a; 
+        
+      }
+
+      .styled-select{
+        font-size: 16px;
+        font-weight: 600;
+        color: #ADB5BD;
+      }
+
+      .checkLabels{
+        font-size: 17px;
+        gap: 50px;
+        padding: 4px 0px;
+      }
+      .checkbox{
+        width: 24px;
+        min-width: 24px;
+        height: 24px;
+        padding: 2px;
+      }
+
+      .calculate, .calculateTransfer{
+
+        border-radius: 4.8px;
+        margin-bottom: 28px;
+        margin-top: 24px;  
+        height: 39px;
+        padding: 8px 16px;
+        gap: 8px;
+        flex-shrink: 0;
+      }
+
+      .calculate, .calculateTransfer a{
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 600;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+      }
+
+      .statement{
+        font-size: 13px;
+
+      } 
+    }
+
+    .hidden{
+      visibility: hidden;
+      width: 0;
+      height: 0;
+    }
+
+    /******************************************************************************************************************************************************************************/
+
+
+    @property --merit {
+      syntax: "<percentage>";
+      inherits: true;
+      initial-value: 0%;
+    }
+
+    @property --RM {
+      syntax: "<percentage>";
+      inherits: true;
+      initial-value: 0%;
+    }
+
+    .circle {
+      --merit: 0%;
+      --RM: 0%;
+
+      background: conic-gradient(
+        at center,
+        var(--merit-color) var(--merit),
+        calc(var(--merit)),
+        var(--RM-color) calc(var(--RM)),
+        calc(var(--RM)),
+        var(--total-color) calc(var(--merit))
+      );
+      animation: progress 2s linear 1 forwards;
+      border-radius: 50%;
+      mask: radial-gradient(circle at center, transparent 55%, black 55%);
+      position: absolute;
+      inset: 0;
+    }
+
+    .circleContainer {
+      filter: drop-shadow(0 0 0.8vmin hsla(0, 0, 0%, 1));
+      position: relative;
+      width: 200px;
+      margin: 15px;
+      aspect-ratio: 1;
+
+    }
+    .circle{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+    }
+
+    .textWrapper {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      inset: 0;
+      z-index: 1;
+      color:  #656565;
+      text-align: center;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+    }
+    .textWrapper p{
+      margin: .3rem ;
+    }
+
+    .totalScholarships{
+      color: #363636;
+      text-align: center;
+      font-size: 35px;
+      font-style: normal;
+      font-weight: 700;
+
+    }
+
+    .circle.animate {
+     animation: progress 2s linear 1 forwards;
+    }
+
+  </style>
+  <link href="https://fonts.cdnfonts.com/css/acumin-pro" rel="stylesheet">  
+  <main>
+    <div>
+      <div id="calculatorScreen">
+        <div class="calculatorHeader">
+          <h1 class="bold">Tuition Calculator</h1>
+        </div>
+        <div class="calculatorContainer">
+          <div class="calculator">
+            <div class='grey calcOpt'>
+              <p class='freshmanOpt current'>FRESHMAN</p>
+              <p class='transferOpt underline'>TRANSFER STUDENT</p>
+            </div>
+            <div class="freshman">
+              <div class="calculatorForm">
+                <form id="calculatorForm">
+                  <p>High school graduates going to college for the first time (12+ more credits).</p>
+                  <label class=" label">High School GPA 
+                    <div class="custom-dropdown">
+                      <select id="GPA" name="gpa" class="styled-select" required>
+                        <option value="" disabled selected>Select your GPA</option>
+                        <option value="3.50">3.50</option>
+                        <option value="3.55">3.55</option>
+                        <option value="3.60">3.60</option>
+                        <option value="3.65">3.65</option>
+                        <option value="3.70">3.70</option>
+                        <option value="3.75">3.75</option>
+                        <option value="3.80">3.80</option>
+                        <option value="3.85">3.85</option>
+                        <option value="3.90">3.90</option>
+                        <option value="3.95">3.95</option>
+                        <option value="4.00">4.00</option>
+                      </select>
+                      <svg class="dropdown-arrow" width="11" height="10" viewBox="0 0 11 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5.42971 7.16172L2.43221 3.73547C2.07846 3.33234 2.36596 2.69922 2.90284 2.69922H8.89784C9.01799 2.69912 9.13563 2.73365 9.23666 2.79868C9.33769 2.86372 9.41783 2.95649 9.46749 3.0659C9.51715 3.17531 9.53422 3.29672 9.51666 3.41558C9.4991 3.53444 9.44764 3.64572 9.36846 3.73609L6.37096 7.16109C6.3123 7.22822 6.23995 7.28203 6.15878 7.31889C6.07761 7.35576 5.98949 7.37483 5.90034 7.37483C5.81119 7.37483 5.72307 7.35576 5.64189 7.31889C5.56072 7.28203 5.48837 7.22822 5.42971 7.16109V7.16172Z" fill="black"/>
+                      </svg>
+                    </div>
+                  </label>
+                  <label class="label">ACT or SAT Score 
+                    <div class="custom-dropdown">
+                      <select id="ACT" name="scores" class="styled-select"required>
+                        <option value="" disabled selected>Select your Score</option>
+                        <option value="25">SAT: 1570 / ACT: 25</option>
+                        <option value="26">SAT: 1530 / ACT: 26</option>
+                        <option value="27">SAT: 1490 / ACT: 27</option>
+                        <option value="28">SAT: 1450 / ACT: 28</option>
+                        <option value="29">SAT: 1420 / ACT: 29</option>
+                        <option value="30">SAT: 1390 / ACT: 30</option>
+                        <option value="31">SAT: 1360 / ACT: 31</option>
+                        <option value="32">SAT: 1330 / ACT: 32</option>
+                        <option value="33">SAT: 1300 / ACT: 33</option>
+                        <option value="34">SAT: 1260 / ACT: 34</option>
+                        <option value="35">SAT: 1230 / ACT: 35</option>
+                        <option value="36">SAT: 1200 / ACT: 36</option>
+                      </select>
+                      <svg class="dropdown-arrow" width="11" height="10" viewBox="0 0 11 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5.42971 7.16172L2.43221 3.73547C2.07846 3.33234 2.36596 2.69922 2.90284 2.69922H8.89784C9.01799 2.69912 9.13563 2.73365 9.23666 2.79868C9.33769 2.86372 9.41783 2.95649 9.46749 3.0659C9.51715 3.17531 9.53422 3.29672 9.51666 3.41558C9.4991 3.53444 9.44764 3.64572 9.36846 3.73609L6.37096 7.16109C6.3123 7.22822 6.23995 7.28203 6.15878 7.31889C6.07761 7.35576 5.98949 7.37483 5.90034 7.37483C5.81119 7.37483 5.72307 7.35576 5.64189 7.31889C5.56072 7.28203 5.48837 7.22822 5.42971 7.16109V7.16172Z" fill="black"/>
+                      </svg>
+                    </div>
+                  </label>
+                  <div class='checks'>
+                    <div class='checkLabels'>
+                      <label>I'm a member of the church</label>
+                      <input class='member checkbox' type="checkbox" checked>
+                    </div>
+                    <div class='checkLabels'>
+                      <label>I returned form a mission less than 18 months ago</label>
+                      <input class='missionary checkbox' type="checkbox">
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="calculate">
+                <a class="calculateButton">CALCULATE</a>
+              </div>
+              <p class="statement">This calculator is an approximate and not a promise of financial aid. If you are an international student visit the <a href="https://www.byui.edu/financial-aid/financial-wellness/international-students">Financial Aid</a> website for more info. </p>
+            </div>
+            <div class="transfer hidden ">
+              <div class="calculatorForm">
+                <form>
+                  <p>College transfer students who have more than 24 college credits (taking 12+ credits).</p>
+                  <label class=" label">College GPA 
+                    <div class="custom-dropdown">
+                      <select id="GPATransfer" name="gpa" class="styled-select">
+                        <option value="" disabled selected>Select your GPA</option>
+                        <option value="3.75 - 3.899">3.75 - 3.899</option>
+                        <option value="3.90 - 3.95">3.90 - 3.95</option>
+                        <option value="3.95 - 4.0">3.95 - 4.0</option>
+                      </select>
+                      <svg class="dropdown-arrow" width="11" height="10" viewBox="0 0 11 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5.42971 7.16172L2.43221 3.73547C2.07846 3.33234 2.36596 2.69922 2.90284 2.69922H8.89784C9.01799 2.69912 9.13563 2.73365 9.23666 2.79868C9.33769 2.86372 9.41783 2.95649 9.46749 3.0659C9.51715 3.17531 9.53422 3.29672 9.51666 3.41558C9.4991 3.53444 9.44764 3.64572 9.36846 3.73609L6.37096 7.16109C6.3123 7.22822 6.23995 7.28203 6.15878 7.31889C6.07761 7.35576 5.98949 7.37483 5.90034 7.37483C5.81119 7.37483 5.72307 7.35576 5.64189 7.31889C5.56072 7.28203 5.48837 7.22822 5.42971 7.16109V7.16172Z" fill="black"/>
+                      </svg>
+                    </div>
+                  </label>
+                  <div class='checks'>
+                    <div class='checkLabels'>
+                      <label>I'm a member of the church</label>
+                      <input class='member checkbox' type="checkbox" checked>
+                    </div>
+                    <div class='checkLabels'>
+                      <label>I returned form a mission less than 18 months ago</label>
+                      <input class='missionary checkbox' type="checkbox">
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="calculateTransfer">
+                <a class="calculateButton">CALCULATE</a>
+              </div>
+              <p class="statement">This calculator is an approximate and not a promise of financial aid. If you are an international student visit the <a href="https://www.byui.edu/financial-aid/financial-wellness/international-students">Financial Aid</a> website for more info. </p>
+            </div>
+          </div>
+          <div class="resultsContainer" >
+            <div class="results hidden">
+              <div class="resultsHeader">
+                <h4>Cost of Tuition <span class="tuition" style="font-weight: bold;"></span></h4>
+                <div class="circleContainer">
+                  <div class="circle"></div>
+                  <div class="textWrapper">
+                    <p>Total Scholarships</p>
+                    <span class="totalScholarships">$0</span>
+                  </div>
+                </div>
+              </div>
+              <div class="breakdown">
+                <div class="checkLabels">
+                  <div class="leftSide">
+                    <div class="colorMerit"></div>
+                    <div class="description">
+                      <a style="color: inherit;" href="https://www.byui.edu/financial-aid/merit-scholarship">Merit Scholarship
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <g clip-path="url(#clip0_3768_15889)">
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M7.5565 3.0625C7.5565 2.94647 7.51041 2.83519 7.42836 2.75314C7.34631 2.67109 7.23503 2.625 7.119 2.625H1.3125C0.964403 2.625 0.630564 2.76328 0.384422 3.00942C0.138281 3.25556 0 3.5894 0 3.9375V12.6875C0 13.0356 0.138281 13.3694 0.384422 13.6156C0.630564 13.8617 0.964403 14 1.3125 14H10.0625C10.4106 14 10.7444 13.8617 10.9906 13.6156C11.2367 13.3694 11.375 13.0356 11.375 12.6875V6.881C11.375 6.76497 11.3289 6.65369 11.2469 6.57164C11.1648 6.48959 11.0535 6.4435 10.9375 6.4435C10.8215 6.4435 10.7102 6.48959 10.6281 6.57164C10.5461 6.65369 10.5 6.76497 10.5 6.881V12.6875C10.5 12.8035 10.4539 12.9148 10.3719 12.9969C10.2898 13.0789 10.1785 13.125 10.0625 13.125H1.3125C1.19647 13.125 1.08519 13.0789 1.00314 12.9969C0.921094 12.9148 0.875 12.8035 0.875 12.6875V3.9375C0.875 3.82147 0.921094 3.71019 1.00314 3.62814C1.08519 3.54609 1.19647 3.5 1.3125 3.5H7.119C7.23503 3.5 7.34631 3.45391 7.42836 3.37186C7.51041 3.28981 7.5565 3.17853 7.5565 3.0625Z" fill="#212529"></path>
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M14 0.4375C14 0.321468 13.9539 0.210188 13.8719 0.128141C13.7898 0.0460936 13.6785 0 13.5625 0H9.1875C9.07147 0 8.96019 0.0460936 8.87814 0.128141C8.79609 0.210188 8.75 0.321468 8.75 0.4375C8.75 0.553532 8.79609 0.664812 8.87814 0.746859C8.96019 0.828906 9.07147 0.875 9.1875 0.875H12.5064L5.37775 8.00275C5.33707 8.04343 5.30481 8.09172 5.28279 8.14486C5.26078 8.19801 5.24945 8.25497 5.24945 8.3125C5.24945 8.37003 5.26078 8.42699 5.28279 8.48014C5.30481 8.53328 5.33707 8.58157 5.37775 8.62225C5.41843 8.66293 5.46672 8.69519 5.51986 8.71721C5.57301 8.73922 5.62997 8.75055 5.6875 8.75055C5.74503 8.75055 5.80199 8.73922 5.85514 8.71721C5.90828 8.69519 5.95657 8.66293 5.99725 8.62225L13.125 1.49363V4.8125C13.125 4.92853 13.1711 5.03981 13.2531 5.12186C13.3352 5.20391 13.4465 5.25 13.5625 5.25C13.6785 5.25 13.7898 5.20391 13.8719 5.12186C13.9539 5.03981 14 4.92853 14 4.8125V0.4375Z" fill="#212529"></path>
+                          </g>
+                          <defs>
+                          <clipPath id="clip0_3768_15889">
+                          <rect width="14" height="14" fill="white"></rect>
+                          </clipPath>
+                          </defs>
+                        </svg>
+                      </a>
+                      <p style="font-size: .8rem; font-style: italic;" >(every semester)</p>
+                    </div>
+                  </div>
+                  <span style="font-weight:bold;" class="dollars merit">$0</span>
+                </div>
+                <div class="checkLabels rMissionaryLabel">
+                  <div class="leftSide">
+
+                    <div class="colorRMissionary"></div>
+                    <div class="description">
+                      <a style="color: inherit;" href="https://www.byui.edu/financial-aid/returned-missionary-scholarship">Return Missionary Scholarship
+
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <g clip-path="url(#clip0_3768_15889)">
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M7.5565 3.0625C7.5565 2.94647 7.51041 2.83519 7.42836 2.75314C7.34631 2.67109 7.23503 2.625 7.119 2.625H1.3125C0.964403 2.625 0.630564 2.76328 0.384422 3.00942C0.138281 3.25556 0 3.5894 0 3.9375V12.6875C0 13.0356 0.138281 13.3694 0.384422 13.6156C0.630564 13.8617 0.964403 14 1.3125 14H10.0625C10.4106 14 10.7444 13.8617 10.9906 13.6156C11.2367 13.3694 11.375 13.0356 11.375 12.6875V6.881C11.375 6.76497 11.3289 6.65369 11.2469 6.57164C11.1648 6.48959 11.0535 6.4435 10.9375 6.4435C10.8215 6.4435 10.7102 6.48959 10.6281 6.57164C10.5461 6.65369 10.5 6.76497 10.5 6.881V12.6875C10.5 12.8035 10.4539 12.9148 10.3719 12.9969C10.2898 13.0789 10.1785 13.125 10.0625 13.125H1.3125C1.19647 13.125 1.08519 13.0789 1.00314 12.9969C0.921094 12.9148 0.875 12.8035 0.875 12.6875V3.9375C0.875 3.82147 0.921094 3.71019 1.00314 3.62814C1.08519 3.54609 1.19647 3.5 1.3125 3.5H7.119C7.23503 3.5 7.34631 3.45391 7.42836 3.37186C7.51041 3.28981 7.5565 3.17853 7.5565 3.0625Z" fill="#212529"></path>
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M14 0.4375C14 0.321468 13.9539 0.210188 13.8719 0.128141C13.7898 0.0460936 13.6785 0 13.5625 0H9.1875C9.07147 0 8.96019 0.0460936 8.87814 0.128141C8.79609 0.210188 8.75 0.321468 8.75 0.4375C8.75 0.553532 8.79609 0.664812 8.87814 0.746859C8.96019 0.828906 9.07147 0.875 9.1875 0.875H12.5064L5.37775 8.00275C5.33707 8.04343 5.30481 8.09172 5.28279 8.14486C5.26078 8.19801 5.24945 8.25497 5.24945 8.3125C5.24945 8.37003 5.26078 8.42699 5.28279 8.48014C5.30481 8.53328 5.33707 8.58157 5.37775 8.62225C5.41843 8.66293 5.46672 8.69519 5.51986 8.71721C5.57301 8.73922 5.62997 8.75055 5.6875 8.75055C5.74503 8.75055 5.80199 8.73922 5.85514 8.71721C5.90828 8.69519 5.95657 8.66293 5.99725 8.62225L13.125 1.49363V4.8125C13.125 4.92853 13.1711 5.03981 13.2531 5.12186C13.3352 5.20391 13.4465 5.25 13.5625 5.25C13.6785 5.25 13.7898 5.20391 13.8719 5.12186C13.9539 5.03981 14 4.92853 14 4.8125V0.4375Z" fill="#212529"></path>
+                          </g>
+                          <defs>
+                          <clipPath id="clip0_3768_15889">
+                          <rect width="14" height="14" fill="white"></rect>
+                          </clipPath>
+                          </defs>
+                        </svg>
+                      </a>
+                      <p style="font-size: .8rem; font-style: italic;">(one semester only)</p>
+                    </div>
+                  </div>
+                  <span style="font-weight:bold;" class="dollars rMissionary">$0</span>
+                </div>
+                <hr>
+                <div class="breakdown2">
+                  <div class="checkLabels">
+                    <p style="font-weight:bold;">Tuition Balance <span style="font-weight:normal;">(You Pay)</span> </p>
+                    <span class="dollars balance" style="font-weight:bold">$0</span>
+                  </div>
+                  <div class="checkLabels excessLabel">
+                    <p style="font-weight:bold;">Excess <span style="font-weight:normal;">(You Pocket)</span> </p>
+                    <span class="dollars excess">$0</span>
+                  </div>
+                </div>
+                <div class="startOverContainer">
+                  <a id="startOver">START OVER</a>
+                  <p class="statement">Additional aid from the government may be available to you. Please see the <a href="https://www.byui.edu/financial-aid/">Financial Aid</a> website for details.</p>
+                </div>
+              </div>
+            </div> 
+            <div class="pending">
+              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="41" viewBox="0 0 40 41" fill="none">
+                <g clip-path="url(#clip0_3629_9775)">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M27.5 38C30.1522 38 32.6957 36.9464 34.5711 35.0711C36.4464 33.1957 37.5 30.6522 37.5 28C37.5 25.3478 36.4464 22.8043 34.5711 20.9289C32.6957 19.0536 30.1522 18 27.5 18C24.8478 18 22.3043 19.0536 20.4289 20.9289C18.5536 22.8043 17.5 25.3478 17.5 28C17.5 30.6522 18.5536 33.1957 20.4289 35.0711C22.3043 36.9464 24.8478 38 27.5 38ZM40 28C40 31.3152 38.683 34.4946 36.3388 36.8388C33.9946 39.183 30.8152 40.5 27.5 40.5C24.1848 40.5 21.0054 39.183 18.6612 36.8388C16.317 34.4946 15 31.3152 15 28C15 24.6848 16.317 21.5054 18.6612 19.1612C21.0054 16.817 24.1848 15.5 27.5 15.5C30.8152 15.5 33.9946 16.817 36.3388 19.1612C38.683 21.5054 40 24.6848 40 28Z" fill="#ADB5BD"/>
+                  <path d="M23.595 30.36C23.7125 31.85 24.89 33.01 27.0025 33.15V34.25H27.94V33.1425C30.1275 32.99 31.405 31.82 31.405 30.125C31.405 28.58 30.43 27.785 28.68 27.375L27.94 27.2V24.2C28.88 24.3075 29.475 24.82 29.6175 25.53H31.2625C31.145 24.0925 29.9125 22.97 27.94 22.8475V21.75H27.0025V22.875C25.135 23.0575 23.865 24.18 23.865 25.77C23.865 27.175 24.81 28.07 26.3825 28.435L27.0025 28.5875V31.7675C26.0425 31.6225 25.405 31.0925 25.2625 30.36H23.595ZM26.995 26.975C26.0725 26.7625 25.5725 26.325 25.5725 25.67C25.5725 24.935 26.1125 24.385 27.0025 24.225V26.975H26.995ZM28.075 28.84C29.1975 29.1 29.7125 29.52 29.7125 30.2625C29.7125 31.11 29.07 31.69 27.94 31.7975V28.81L28.075 28.84Z" fill="#ADB5BD"/>
+                  <path d="M2.5 0.5C1.83696 0.5 1.20107 0.763392 0.732233 1.23223C0.263392 1.70107 0 2.33696 0 3V23C0 23.663 0.263392 24.2989 0.732233 24.7678C1.20107 25.2366 1.83696 25.5 2.5 25.5H12.7075C12.8525 24.64 13.07 23.805 13.3525 23H7.5C7.5 21.6739 6.97322 20.4021 6.03553 19.4645C5.09785 18.5268 3.82608 18 2.5 18V8C3.82608 8 5.09785 7.47322 6.03553 6.53553C6.97322 5.59785 7.5 4.32608 7.5 3H32.5C32.5 4.32608 33.0268 5.59785 33.9645 6.53553C34.9021 7.47322 36.1739 8 37.5 8V16.82C38.45 17.67 39.2925 18.64 40 19.705V3C40 2.33696 39.7366 1.70107 39.2678 1.23223C38.7989 0.763392 38.163 0.5 37.5 0.5H2.5Z" fill="#ADB5BD"/>
+                  <path d="M24.995 13.2075L25 13C24.9995 12.139 24.7766 11.2927 24.353 10.5431C23.9294 9.79346 23.3194 9.16594 22.5821 8.72129C21.8448 8.27665 21.0051 8.02994 20.1445 8.00506C19.2838 7.98019 18.4313 8.17798 17.6695 8.5793C16.9077 8.98062 16.2625 9.57186 15.7963 10.2957C15.3301 11.0196 15.0588 11.8517 15.0085 12.7112C14.9583 13.5708 15.1309 14.4287 15.5095 15.202C15.8882 15.9753 16.4602 16.6377 17.17 17.125C19.3294 15.0682 22.0544 13.7039 24.995 13.2075Z" fill="#ADB5BD"/>
+                </g>
+                <defs>
+                  <clipPath id="clip0_3629_9775">
+                    <rect width="40" height="40" fill="white" transform="translate(0 0.5)"/>
+                  </clipPath>
+                </defs>
+              </svg>
+              <p>Enter your GPA and test scores to see what you qualify for!</p>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </main>
+    
+  <script >
+    let gpaCols = {"4.00": 0, "3.95": 1,"3.90": 2, "3.85": 3, "3.80": 4, "3.75": 5,"3.70": 6, "3.65": 7, "3.60": 8, "3.55": 9, "3.50": 10}
+let actRows= {"36": 0, "35": 1, "34": 2, "33": 3, "32": 4, "31": 5, "30": 6, "29": 7, "28": 8, "27": 9, "26": 10,"25": 11}
+
+let scholarshipMatrix = [ 
+  //  0   1   2   3   4   5   6   7   8   9  10
+    [100,100,100,100,100,100,100,100,100,100,100], //0
+    [100,100,100,100,100,100,100,100,100,50, 50],  //1
+    [100,100,100,100,100,100,100,100,50, 50, 50],  //2
+    [100,100,100,100,100,100,100,50, 50, 50, 50],  //3
+    [100,100,100,100,100,100,50, 50, 50, 50, 25],  //4
+    [100,100,100,100,100,50, 50, 50, 50, 25, 25],  //5
+    [100,100,100,100,50, 50, 50, 50, 25, 25, 25],  //6
+    [100,50, 50, 50, 50, 50, 50, 25, 25, 25, 25],  //7
+    [50, 50, 50, 50, 50, 50, 25, 25, 25, 25, 25],  //8
+    [50, 50, 50, 50, 50, 25, 25, 25, 25, 25, 25],  //9
+    [50, 50, 50, 50, 25, 25, 25, 25, 25, 25, 25],  //10
+    [50, 50, 50, 25, 25, 25, 25, 25, 25, 25, 25],  //11
+    [25, 25, 25, 25, 25,  0,  0,  0,  0,  0,  0]   //12
+]
+
+let gpaColsTransfer = {
+  "3.75 - 3.899": 0, 
+  "3.90 - 3.95": 1,
+  "3.95 - 4.0": 2, 
+}
+
+let scholarshipTransferStudents = [
+  100, 50, 25
+]
+
+function getPercentages(GPA, ACT){
+  let row = actRows[ACT]
+  let col = gpaCols[GPA]
+  
+  return scholarshipMatrix[row][col]
+}
+function getPercentagesTransfer(GPA){
+  let index = gpaColsTransfer[GPA]
+  
+  return scholarshipTransferStudents[index]
+}
+
+function setCSSAnimation(meritPercentage, rmPercentage){
+  
+  const styleSheet = document.styleSheets[0]; 
+
+  // Remove any existing keyframes rule with the same name
+  for (let i = 0; i < styleSheet.cssRules.length; i++) {
+    if (styleSheet.cssRules[i].name === 'progress') {
+      styleSheet.deleteRule(i);
+      break;
+    }
+  }
+
+  // Create the new keyframes rule
+  const keyframesRule = `
+    @keyframes progress {
+      from {
+        --merit: 0%;
+        --RM: 0%;
+      }
+      to {
+        --merit: ${meritPercentage}%;
+        --RM: ${meritPercentage + rmPercentage}%;
+      }
+    }
+  `;
+
+  // Inject the new keyframes rule
+  styleSheet.insertRule(keyframesRule, styleSheet.cssRules.length);
+
+}
+
+function resetAnimation(element) {
+  element.style.animation = 'none'; 
+  element.offsetHeight; 
+  element.style.setProperty('--tuition', '0%');
+  element.style.setProperty('--merit', '0%');
+  element.style.setProperty('--RM', '0%');
+  document.querySelector(".results").style.height = ""
+
+
+}
+
+
+function calculateScholarship(GPA, ACT){
+  const member = document.querySelector(".member").checked
+  const missionary = document.querySelector('.missionary').checked
+  
+  document.querySelector(".rMissionaryLabel").style.display = (!missionary)? 'none': 'flex'
+  document.querySelector(".excessLabel").style.display = (!missionary)? 'none': 'flex'
+ 
+
+  const tuition = (member) ? 2400 : 4800
+  const tuitionPercentage = 100
+  const meritPercentage = getPercentages(GPA,ACT)
+  const merit =  (meritPercentage * tuition)/tuitionPercentage
+  const rMissionary = (missionary) ? 1000 : 0
+  const rmPercentage = (rMissionary * tuitionPercentage)/tuition
+
+  let totalPay = tuition - merit - rMissionary
+  let balance = (totalPay > 0) ? totalPay : 0
+  let excess = (totalPay < 0) ? totalPay * -1 : 0
+  
+  
+  const circle = document.querySelector('.circle');
+  circle.style.setProperty('--tuition', `${meritPercentage}%`);
+  circle.style.setProperty('--merit', `${meritPercentage}%`);
+  circle.style.setProperty('--RM', `${rmPercentage}%`);
+  circle.style.animation = ''; 
+
+  setCSSAnimation(meritPercentage, rmPercentage)
+
+  document.querySelector(".tuition").innerText = `$${tuition.toLocaleString()}`
+  document.querySelector(".merit").innerText = `$${merit.toLocaleString()}`
+  document.querySelector(".rMissionary").innerText = `$${rMissionary.toLocaleString()}`
+  document.querySelector(".balance").innerText = `$${balance.toLocaleString()}`
+  if (excess){
+    document.querySelector(".excessLabel").style.display = 'flex'
+    document.querySelector(".excess").innerText = `$${excess.toLocaleString()}`
+  }else{
+    document.querySelector(".excessLabel").style.display = 'none'
+  }
+  document.querySelector(".totalScholarships").innerText = `$${(merit + rMissionary).toLocaleString()}`
+
+
+
+}
+function calculateScholarshipTransfer(GPA){
+  const member = document.querySelector(".member").checked
+  const missionary = document.querySelector('.missionary').checked
+  
+  document.querySelector(".rMissionaryLabel").style.display = (!missionary)? 'none': 'flex'
+  document.querySelector(".excessLabel").style.display = (!missionary)? 'none': 'flex'
+ 
+
+  const tuition = (member) ? 2400 : 4800
+  const tuitionPercentage = 100
+  const meritPercentage = getPercentagesTransfer(GPA,ACT)
+  const merit =  (meritPercentage * tuition)/tuitionPercentage
+  const rMissionary = (missionary) ? 1000 : 0
+  const rmPercentage = (rMissionary * tuitionPercentage)/tuition
+
+  let totalPay = tuition - merit - rMissionary
+  let balance = (totalPay > 0) ? totalPay : 0
+  let excess = (totalPay < 0) ? totalPay * -1 : 0
+  
+  
+  const circle = document.querySelector('.circle');
+  circle.style.setProperty('--tuition', `${meritPercentage}%`);
+  circle.style.setProperty('--merit', `${meritPercentage}%`);
+  circle.style.setProperty('--RM', `${rmPercentage}%`);
+  circle.style.animation = ''; 
+
+  setCSSAnimation(meritPercentage, rmPercentage)
+
+  document.querySelector(".tuition").innerText = `$${tuition.toLocaleString()}`
+  document.querySelector(".merit").innerText = `$${merit.toLocaleString()}`
+  document.querySelector(".rMissionary").innerText = `$${rMissionary.toLocaleString()}`
+  document.querySelector(".balance").innerText = `$${balance.toLocaleString()}`
+  if (excess){
+    document.querySelector(".excessLabel").style.display = 'flex'
+    document.querySelector(".excess").innerText = `$${excess.toLocaleString()}`
+  }else{
+    document.querySelector(".excessLabel").style.display = 'none'
+  }
+  document.querySelector(".totalScholarships").innerText = `$${(merit + rMissionary).toLocaleString()}`
+
+
+
+}
+
+
+
+function handleSmallWindowStartOver(){
+
+  calculator.classList.add('hidden')
+  resultsContainer.classList.remove('hidden')
+  resultsContainer.style.height = '37em';
+  resultsContainer.style.width = '20em';
+  resultsContainer.style.visibility = 'visible'
+
+}
+
+const results =  document.querySelector('.results')
+const pending =  document.querySelector('.pending')
+const resultsContainer = document.querySelector(".resultsContainer")
+const calculator = document.querySelector(".calculator")
+
+document.querySelector('.calculate').addEventListener('click',()=>{
+  resetAnimation(document.querySelector('.circle'))
+  const GPA = document.querySelector('#GPA').value;
+  const ACT = document.querySelector('#ACT').value;
+
+  pending.classList.add('hidden')
+  results.classList.remove('hidden')
+  document.querySelector(".results").style.height = "100%"
+  document.querySelector(".results").style.width = "100%"
+  calculateScholarship(GPA, ACT)
+
+  if (resultsContainer.classList.contains('hidden')){
+    calculator.classList.add('hidden')
+    resultsContainer.classList.remove('hidden')
+  }
+  if(window.innerWidth < 1000){
+    handleSmallWindowStartOver()
+  }
+})
+
+
+document.querySelector('.calculateTransfer').addEventListener('click',()=>{
+  resetAnimation(document.querySelector('.circle'))
+  const GPA = document.querySelector('#GPATransfer').value;
+  pending.classList.add('hidden')
+  results.classList.remove('hidden')
+  document.querySelector(".results").style.height = "100%"
+  document.querySelector(".results").style.width = "100%"
+  calculateScholarshipTransfer(GPA)
+
+  if (resultsContainer.classList.contains('hidden')){
+    calculator.classList.add('hidden')
+    resultsContainer.classList.remove('hidden')
+  }
+  if(window.innerWidth < 1000){
+    handleSmallWindowStartOver()
+  }
+})
+
+
+
+
+document.querySelector('#startOver').addEventListener("click", ()=>{
+
+  document.getElementById('calculatorForm').reset()
+  resetAnimation(document.querySelector('.circle'))
+
+  if (calculator.classList.contains('hidden')){
+    calculator.classList.remove('hidden')
+    resultsContainer.classList.add('hidden')
+  }else{
+    results.classList.add('hidden')
+    pending.classList.remove('hidden')
+  }
+
+  if(window.innerWidth < 1000){
+    resultsContainer.style.visibility = 'hidden' 
+    // calculator.classList.add('hidden')
+    // resultsContainer.style.visibility = 'visible'
+    // resultsContainer.classList.remove('hidden')
+    resultsContainer.style.height = '0';
+    resultsContainer.style.width = '0';
+  }
+})
+
+const freshmanCalculator = document.querySelector('.freshman')
+const transferCalculator = document.querySelector('.transfer')
+
+
+let freshmanOpt = document.querySelector('.freshmanOpt')
+let transferOpt = document.querySelector('.transferOpt')
+
+
+transferOpt.addEventListener('click', ()=>{
+  
+
+ if (!freshmanCalculator.classList.contains('hidden')){
+
+  transferOpt.classList.add('current')
+  freshmanOpt.classList.add('underline')
+  freshmanOpt.classList.remove('current')
+  transferOpt.classList.remove('underline')
+
+  freshmanCalculator.classList.add('hidden')
+  transferCalculator.classList.remove('hidden')
+
+ }
+
+})
+
+
+freshmanOpt.addEventListener('click', ()=>{
+  freshmanOpt.classList.add('current')
+  transferOpt.classList.add('underline')
+  transferOpt.classList.remove('current')
+  freshmanOpt.classList.remove('underline')
+
+
+  transferCalculator.classList.add('hidden')
+  freshmanCalculator.classList.remove('hidden')
+})
+
+
+  </script>
+
+</body>
