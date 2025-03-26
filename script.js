@@ -1,5 +1,5 @@
 let gpaCols = {"4.00": 0, "3.95": 1,"3.90": 2, "3.85": 3, "3.80": 4, "3.75": 5,"3.70": 6, "3.65": 7, "3.60": 8, "3.55": 9, "3.50": 10}
-let actRows= {"36": 0, "35": 1, "34": 2, "33": 3, "32": 4, "31": 5, "30": 6, "29": 7, "28": 8, "27": 9, "26": 10,"25": 11}
+let actRows= {"36": 0, "35": 1, "34": 2, "33": 3, "32": 4, "31": 5, "30": 6, "29": 7, "28": 8, "27": 9, "26": 10,"25": 11, "24": 12}
 
 let scholarshipMatrix = [ 
   //  0   1   2   3   4   5   6   7   8   9  10
@@ -94,41 +94,48 @@ function calculateScholarship(GPA, ACT){
   const tuition = (member) ? 2400 : 4800
   const tuitionPercentage = 100
   const meritPercentage = getPercentages(GPA,ACT)
-  const merit =  (meritPercentage * tuition)/tuitionPercentage
-  const rMissionary = (missionary) ? 1000 : 0
-  const rmPercentage = (rMissionary * tuitionPercentage)/tuition
+  if (meritPercentage == 0 && !missionary){
+    document.querySelector('.resultsTop').classList.add('hidden')
+    document.querySelector('.noScholarshipScreen').classList.remove('hidden')
+    document.querySelector(".balance").innerText = `$${tuition.toLocaleString()}`
+    
+  } else {
 
-  let totalPay = tuition - merit - rMissionary
-  let balance = (totalPay > 0) ? totalPay : 0
-  let excess = (totalPay < 0) ? totalPay * -1 : 0
-  
-  
-  const circle = document.querySelector('.circle');
-  circle.style.setProperty('--tuition', `${meritPercentage}%`);
-  circle.style.setProperty('--merit', `${meritPercentage}%`);
-  circle.style.setProperty('--RM', `${rmPercentage}%`);
-  circle.style.animation = ''; 
+    const merit =  (meritPercentage * tuition)/tuitionPercentage
+    const rMissionary = (missionary) ? 1000 : 0
+    const rmPercentage = (rMissionary * tuitionPercentage)/tuition
 
-  setCSSAnimation(meritPercentage, rmPercentage)
+    let totalPay = tuition - merit - rMissionary
+    let balance = (totalPay > 0) ? totalPay : 0
+    let excess = (totalPay < 0) ? totalPay * -1 : 0
+    
+    
+    const circle = document.querySelector('.circle');
+    circle.style.setProperty('--tuition', `${meritPercentage}%`);
+    circle.style.setProperty('--merit', `${meritPercentage}%`);
+    circle.style.setProperty('--RM', `${rmPercentage}%`);
+    circle.style.animation = ''; 
 
-  document.querySelector(".tuition").innerText = `$${tuition.toLocaleString()}`
-  document.querySelector(".merit").innerText = `$${merit.toLocaleString()}`
-  document.querySelector(".rMissionary").innerText = `$${rMissionary.toLocaleString()}`
-  document.querySelector(".balance").innerText = `$${balance.toLocaleString()}`
-  if (excess){
-    document.querySelector(".excessLabel").style.display = 'flex'
-    document.querySelector(".excess").innerText = `$${excess.toLocaleString()}`
-  }else{
-    document.querySelector(".excessLabel").style.display = 'none'
+    setCSSAnimation(meritPercentage, rmPercentage)
+
+    document.querySelector(".tuition").innerText = `$${tuition.toLocaleString()}`
+    document.querySelector(".merit").innerText = `$${merit.toLocaleString()}`
+    document.querySelector(".rMissionary").innerText = `$${rMissionary.toLocaleString()}`
+    document.querySelector(".balance").innerText = `$${balance.toLocaleString()}`
+    if (excess){
+      document.querySelector(".excessLabel").style.display = 'flex'
+      document.querySelector(".excess").innerText = `$${excess.toLocaleString()}`
+    }else{
+      document.querySelector(".excessLabel").style.display = 'none'
+    }
+    document.querySelector(".totalScholarships").innerText = `$${(merit + rMissionary).toLocaleString()}`
   }
-  document.querySelector(".totalScholarships").innerText = `$${(merit + rMissionary).toLocaleString()}`
-
 
 
 }
 function calculateScholarshipTransfer(GPA){
-  const member = document.querySelector(".member").checked
-  const missionary = document.querySelector('.missionary').checked
+  const member = document.querySelector(".memberTransfer").checked
+  const missionary = document.querySelector('.missionaryTransfer').checked
   
   document.querySelector(".rMissionaryLabel").style.display = (!missionary)? 'none': 'flex'
   document.querySelector(".excessLabel").style.display = (!missionary)? 'none': 'flex'
@@ -242,6 +249,11 @@ document.querySelector('#startOver').addEventListener("click", ()=>{
     pending.classList.remove('hidden')
   }
 
+  if ( document.querySelector('.resultsTop').classList.contains('hidden')){
+    document.querySelector('.resultsTop').classList.remove('hidden')
+    document.querySelector('.noScholarshipScreen').classList.add('hidden')
+  }    
+
   if(window.innerWidth < 1000){
     resultsContainer.style.visibility = 'hidden' 
     // calculator.classList.add('hidden')
@@ -289,3 +301,5 @@ freshmanOpt.addEventListener('click', ()=>{
   freshmanCalculator.classList.remove('hidden')
 })
 
+const date = new Date().getFullYear();
+document.querySelector('.rmYear').innerText = date - 1

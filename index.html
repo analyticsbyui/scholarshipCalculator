@@ -28,12 +28,12 @@
             <div class="freshman">
               <div class="calculatorForm">
                 <form id="calculatorForm">
-                  <p>High school graduates going to college for the first time (12+ more credits).</p>
+                  <p>High school graduates going to college for the first time.</p>
                   <label class=" label">High School GPA 
                     <div class="custom-dropdown">
                       <select id="GPA" name="gpa" class="styled-select" required>
                         <option value="" disabled selected>Select your GPA</option>
-                        <option value="3.50">3.50</option>
+                        <option value="3.50">3.50 (or lower)</option>
                         <option value="3.55">3.55</option>
                         <option value="3.60">3.60</option>
                         <option value="3.65">3.65</option>
@@ -50,10 +50,11 @@
                       </svg>
                     </div>
                   </label>
-                  <label class="label">ACT or SAT Score 
+                  <label class="label">SAT or ACT Score 
                     <div class="custom-dropdown">
                       <select id="ACT" name="scores" class="styled-select"required>
                         <option value="" disabled selected>Select your Score</option>
+                        <option value="24">SAT: < 1199 / ACT: < 24 </option>
                         <option value="25">SAT: 1570 / ACT: 25</option>
                         <option value="26">SAT: 1530 / ACT: 26</option>
                         <option value="27">SAT: 1490 / ACT: 27</option>
@@ -78,21 +79,21 @@
                       <input class='member checkbox' type="checkbox" checked>
                     </div>
                     <div class='checkLabels'>
-                      <label>I returned form a mission less than 18 months ago</label>
+                      <label style="display: block;">I returned form a mission after Jan 1st <span class="rmYear"> </span></label>
                       <input class='missionary checkbox' type="checkbox">
                     </div>
                   </div>
                 </form>
               </div>
-              <div class="calculate">
+              <div class="calculate button">
                 <a class="calculateButton">CALCULATE</a>
               </div>
-              <p class="statement">This calculator is an approximate and not a promise of financial aid. If you are an international student visit the <a href="https://www.byui.edu/financial-aid/financial-wellness/international-students">Financial Aid</a> website for more info. </p>
+              <p class="statement">This calculator is an approximate and not a promise of financial aid.</p>
             </div>
             <div class="transfer hidden ">
               <div class="calculatorForm">
                 <form>
-                  <p>College transfer students who have more than 24 college credits (taking 12+ credits).</p>
+                  <p>College transfer students who have more than 24 college credits.</p>
                   <label class=" label">College GPA 
                     <div class="custom-dropdown">
                       <select id="GPATransfer" name="gpa" class="styled-select">
@@ -109,95 +110,109 @@
                   <div class='checks'>
                     <div class='checkLabels'>
                       <label>I'm a member of the church</label>
-                      <input class='member checkbox' type="checkbox" checked>
+                      <input class='memberTransfer checkbox' type="checkbox" checked>
                     </div>
                     <div class='checkLabels'>
-                      <label>I returned form a mission less than 18 months ago</label>
-                      <input class='missionary checkbox' type="checkbox">
+                      <label style="display: block">I returned form a mission after Jan 1st <span class="rmYear"> </span></label>
+                      <input class='missionaryTransfer checkbox' type="checkbox">
                     </div>
                   </div>
                 </form>
               </div>
-              <div class="calculateTransfer">
+              <div class="calculateTransfer button">
                 <a class="calculateButton">CALCULATE</a>
               </div>
-              <p class="statement">This calculator is an approximate and not a promise of financial aid. If you are an international student visit the <a href="https://www.byui.edu/financial-aid/financial-wellness/international-students">Financial Aid</a> website for more info. </p>
+              <p class="statement">This calculator is an approximate and not a promise of financial aid.</p>
             </div>
           </div>
           <div class="resultsContainer" >
             <div class="results hidden">
-              <div class="resultsHeader">
-                <h4>Cost of Tuition <span class="tuition" style="font-weight: bold;"></span></h4>
-                <div class="circleContainer">
-                  <div class="circle"></div>
-                  <div class="textWrapper">
-                    <p>Total Scholarships</p>
-                    <span class="totalScholarships">$0</span>
+              <div class="noScholarshipScreen hidden ">
+                <img src="illustration.png" alt="books pilled">
+                <p>Your current scores don't meet the qualifications for a Merit or Return Missionary Scholarhip.</p>
+                <p>Other scholarships may be available</p>
+                <div class="button" >
+                  <a type="button">FINANCIAL AID OPTIONS</a>
+                </div>
+              </div>
+              <div class="resultsTop">
+                <div class="resultsHeader">
+                  <h4>Cost of Tuition <span class="tuition" style="font-weight: bold;"></span></h4>
+                  <p style="color: #656565; margin:2px">(12+ more credits)</p>
+                  <div class="circleContainer">
+                    <div class="circle"></div>
+                    <div class="textWrapper">
+                      <p>Total Scholarships</p>
+                      <span class="totalScholarships">$0</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="breakdown">
+                  <div class="checkLabels">
+                    <div class="leftSide">
+                      <div class="colorMerit"></div>
+                      <div class="description">
+                        <a style="color: inherit;" href="https://www.byui.edu/financial-aid/merit-scholarship">Merit Scholarship
+                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <g clip-path="url(#clip0_3768_15889)">
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M7.5565 3.0625C7.5565 2.94647 7.51041 2.83519 7.42836 2.75314C7.34631 2.67109 7.23503 2.625 7.119 2.625H1.3125C0.964403 2.625 0.630564 2.76328 0.384422 3.00942C0.138281 3.25556 0 3.5894 0 3.9375V12.6875C0 13.0356 0.138281 13.3694 0.384422 13.6156C0.630564 13.8617 0.964403 14 1.3125 14H10.0625C10.4106 14 10.7444 13.8617 10.9906 13.6156C11.2367 13.3694 11.375 13.0356 11.375 12.6875V6.881C11.375 6.76497 11.3289 6.65369 11.2469 6.57164C11.1648 6.48959 11.0535 6.4435 10.9375 6.4435C10.8215 6.4435 10.7102 6.48959 10.6281 6.57164C10.5461 6.65369 10.5 6.76497 10.5 6.881V12.6875C10.5 12.8035 10.4539 12.9148 10.3719 12.9969C10.2898 13.0789 10.1785 13.125 10.0625 13.125H1.3125C1.19647 13.125 1.08519 13.0789 1.00314 12.9969C0.921094 12.9148 0.875 12.8035 0.875 12.6875V3.9375C0.875 3.82147 0.921094 3.71019 1.00314 3.62814C1.08519 3.54609 1.19647 3.5 1.3125 3.5H7.119C7.23503 3.5 7.34631 3.45391 7.42836 3.37186C7.51041 3.28981 7.5565 3.17853 7.5565 3.0625Z" fill="#212529"></path>
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M14 0.4375C14 0.321468 13.9539 0.210188 13.8719 0.128141C13.7898 0.0460936 13.6785 0 13.5625 0H9.1875C9.07147 0 8.96019 0.0460936 8.87814 0.128141C8.79609 0.210188 8.75 0.321468 8.75 0.4375C8.75 0.553532 8.79609 0.664812 8.87814 0.746859C8.96019 0.828906 9.07147 0.875 9.1875 0.875H12.5064L5.37775 8.00275C5.33707 8.04343 5.30481 8.09172 5.28279 8.14486C5.26078 8.19801 5.24945 8.25497 5.24945 8.3125C5.24945 8.37003 5.26078 8.42699 5.28279 8.48014C5.30481 8.53328 5.33707 8.58157 5.37775 8.62225C5.41843 8.66293 5.46672 8.69519 5.51986 8.71721C5.57301 8.73922 5.62997 8.75055 5.6875 8.75055C5.74503 8.75055 5.80199 8.73922 5.85514 8.71721C5.90828 8.69519 5.95657 8.66293 5.99725 8.62225L13.125 1.49363V4.8125C13.125 4.92853 13.1711 5.03981 13.2531 5.12186C13.3352 5.20391 13.4465 5.25 13.5625 5.25C13.6785 5.25 13.7898 5.20391 13.8719 5.12186C13.9539 5.03981 14 4.92853 14 4.8125V0.4375Z" fill="#212529"></path>
+                          </g>
+                          <defs>
+                            <clipPath id="clip0_3768_15889">
+                              <rect width="14" height="14" fill="white"></rect>
+                            </clipPath>
+                            </defs>
+                          </svg>
+                        </a>
+                        <p style="font-size: .8rem; font-style: italic;" >(every semester)</p>
+                      </div>
+                    </div>
+                    <span style="font-weight:bold;" class="dollars merit">$0</span>
+                  </div>
+                  <div class="checkLabels rMissionaryLabel">
+                    <div class="leftSide">
+                      
+                      <div class="colorRMissionary"></div>
+                      <div class="description">
+                        <a style="color: inherit;" href="https://www.byui.edu/financial-aid/returned-missionary-scholarship">Return Missionary Scholarship
+                          
+                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_3768_15889)">
+                              <path fill-rule="evenodd" clip-rule="evenodd" d="M7.5565 3.0625C7.5565 2.94647 7.51041 2.83519 7.42836 2.75314C7.34631 2.67109 7.23503 2.625 7.119 2.625H1.3125C0.964403 2.625 0.630564 2.76328 0.384422 3.00942C0.138281 3.25556 0 3.5894 0 3.9375V12.6875C0 13.0356 0.138281 13.3694 0.384422 13.6156C0.630564 13.8617 0.964403 14 1.3125 14H10.0625C10.4106 14 10.7444 13.8617 10.9906 13.6156C11.2367 13.3694 11.375 13.0356 11.375 12.6875V6.881C11.375 6.76497 11.3289 6.65369 11.2469 6.57164C11.1648 6.48959 11.0535 6.4435 10.9375 6.4435C10.8215 6.4435 10.7102 6.48959 10.6281 6.57164C10.5461 6.65369 10.5 6.76497 10.5 6.881V12.6875C10.5 12.8035 10.4539 12.9148 10.3719 12.9969C10.2898 13.0789 10.1785 13.125 10.0625 13.125H1.3125C1.19647 13.125 1.08519 13.0789 1.00314 12.9969C0.921094 12.9148 0.875 12.8035 0.875 12.6875V3.9375C0.875 3.82147 0.921094 3.71019 1.00314 3.62814C1.08519 3.54609 1.19647 3.5 1.3125 3.5H7.119C7.23503 3.5 7.34631 3.45391 7.42836 3.37186C7.51041 3.28981 7.5565 3.17853 7.5565 3.0625Z" fill="#212529"></path>
+                              <path fill-rule="evenodd" clip-rule="evenodd" d="M14 0.4375C14 0.321468 13.9539 0.210188 13.8719 0.128141C13.7898 0.0460936 13.6785 0 13.5625 0H9.1875C9.07147 0 8.96019 0.0460936 8.87814 0.128141C8.79609 0.210188 8.75 0.321468 8.75 0.4375C8.75 0.553532 8.79609 0.664812 8.87814 0.746859C8.96019 0.828906 9.07147 0.875 9.1875 0.875H12.5064L5.37775 8.00275C5.33707 8.04343 5.30481 8.09172 5.28279 8.14486C5.26078 8.19801 5.24945 8.25497 5.24945 8.3125C5.24945 8.37003 5.26078 8.42699 5.28279 8.48014C5.30481 8.53328 5.33707 8.58157 5.37775 8.62225C5.41843 8.66293 5.46672 8.69519 5.51986 8.71721C5.57301 8.73922 5.62997 8.75055 5.6875 8.75055C5.74503 8.75055 5.80199 8.73922 5.85514 8.71721C5.90828 8.69519 5.95657 8.66293 5.99725 8.62225L13.125 1.49363V4.8125C13.125 4.92853 13.1711 5.03981 13.2531 5.12186C13.3352 5.20391 13.4465 5.25 13.5625 5.25C13.6785 5.25 13.7898 5.20391 13.8719 5.12186C13.9539 5.03981 14 4.92853 14 4.8125V0.4375Z" fill="#212529"></path>
+                            </g>
+                            <defs>
+                              <clipPath id="clip0_3768_15889">
+                                <rect width="14" height="14" fill="white"></rect>
+                              </clipPath>
+                            </defs>
+                          </svg>
+                        </a>
+                        <p style="font-size: .8rem; font-style: italic;">(one semester only)</p>
+                      </div>
+                    </div>
+                    <span style="font-weight:bold;" class="dollars rMissionary">$0</span>
                   </div>
                 </div>
               </div>
-              <div class="breakdown">
+              <hr>
+              <div class="breakdown2">
                 <div class="checkLabels">
-                  <div class="leftSide">
-                    <div class="colorMerit"></div>
-                    <div class="description">
-                      <a style="color: inherit;" href="https://www.byui.edu/financial-aid/merit-scholarship">Merit Scholarship
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <g clip-path="url(#clip0_3768_15889)">
-                          <path fill-rule="evenodd" clip-rule="evenodd" d="M7.5565 3.0625C7.5565 2.94647 7.51041 2.83519 7.42836 2.75314C7.34631 2.67109 7.23503 2.625 7.119 2.625H1.3125C0.964403 2.625 0.630564 2.76328 0.384422 3.00942C0.138281 3.25556 0 3.5894 0 3.9375V12.6875C0 13.0356 0.138281 13.3694 0.384422 13.6156C0.630564 13.8617 0.964403 14 1.3125 14H10.0625C10.4106 14 10.7444 13.8617 10.9906 13.6156C11.2367 13.3694 11.375 13.0356 11.375 12.6875V6.881C11.375 6.76497 11.3289 6.65369 11.2469 6.57164C11.1648 6.48959 11.0535 6.4435 10.9375 6.4435C10.8215 6.4435 10.7102 6.48959 10.6281 6.57164C10.5461 6.65369 10.5 6.76497 10.5 6.881V12.6875C10.5 12.8035 10.4539 12.9148 10.3719 12.9969C10.2898 13.0789 10.1785 13.125 10.0625 13.125H1.3125C1.19647 13.125 1.08519 13.0789 1.00314 12.9969C0.921094 12.9148 0.875 12.8035 0.875 12.6875V3.9375C0.875 3.82147 0.921094 3.71019 1.00314 3.62814C1.08519 3.54609 1.19647 3.5 1.3125 3.5H7.119C7.23503 3.5 7.34631 3.45391 7.42836 3.37186C7.51041 3.28981 7.5565 3.17853 7.5565 3.0625Z" fill="#212529"></path>
-                          <path fill-rule="evenodd" clip-rule="evenodd" d="M14 0.4375C14 0.321468 13.9539 0.210188 13.8719 0.128141C13.7898 0.0460936 13.6785 0 13.5625 0H9.1875C9.07147 0 8.96019 0.0460936 8.87814 0.128141C8.79609 0.210188 8.75 0.321468 8.75 0.4375C8.75 0.553532 8.79609 0.664812 8.87814 0.746859C8.96019 0.828906 9.07147 0.875 9.1875 0.875H12.5064L5.37775 8.00275C5.33707 8.04343 5.30481 8.09172 5.28279 8.14486C5.26078 8.19801 5.24945 8.25497 5.24945 8.3125C5.24945 8.37003 5.26078 8.42699 5.28279 8.48014C5.30481 8.53328 5.33707 8.58157 5.37775 8.62225C5.41843 8.66293 5.46672 8.69519 5.51986 8.71721C5.57301 8.73922 5.62997 8.75055 5.6875 8.75055C5.74503 8.75055 5.80199 8.73922 5.85514 8.71721C5.90828 8.69519 5.95657 8.66293 5.99725 8.62225L13.125 1.49363V4.8125C13.125 4.92853 13.1711 5.03981 13.2531 5.12186C13.3352 5.20391 13.4465 5.25 13.5625 5.25C13.6785 5.25 13.7898 5.20391 13.8719 5.12186C13.9539 5.03981 14 4.92853 14 4.8125V0.4375Z" fill="#212529"></path>
-                          </g>
-                          <defs>
-                          <clipPath id="clip0_3768_15889">
-                          <rect width="14" height="14" fill="white"></rect>
-                          </clipPath>
-                          </defs>
-                        </svg>
-                      </a>
-                      <p style="font-size: .8rem; font-style: italic;" >(every semester)</p>
-                    </div>
-                  </div>
-                  <span style="font-weight:bold;" class="dollars merit">$0</span>
-                </div>
-                <div class="checkLabels rMissionaryLabel">
-                  <div class="leftSide">
-
-                    <div class="colorRMissionary"></div>
-                    <div class="description">
-                      <a style="color: inherit;" href="https://www.byui.edu/financial-aid/returned-missionary-scholarship">Return Missionary Scholarship
-
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <g clip-path="url(#clip0_3768_15889)">
-                          <path fill-rule="evenodd" clip-rule="evenodd" d="M7.5565 3.0625C7.5565 2.94647 7.51041 2.83519 7.42836 2.75314C7.34631 2.67109 7.23503 2.625 7.119 2.625H1.3125C0.964403 2.625 0.630564 2.76328 0.384422 3.00942C0.138281 3.25556 0 3.5894 0 3.9375V12.6875C0 13.0356 0.138281 13.3694 0.384422 13.6156C0.630564 13.8617 0.964403 14 1.3125 14H10.0625C10.4106 14 10.7444 13.8617 10.9906 13.6156C11.2367 13.3694 11.375 13.0356 11.375 12.6875V6.881C11.375 6.76497 11.3289 6.65369 11.2469 6.57164C11.1648 6.48959 11.0535 6.4435 10.9375 6.4435C10.8215 6.4435 10.7102 6.48959 10.6281 6.57164C10.5461 6.65369 10.5 6.76497 10.5 6.881V12.6875C10.5 12.8035 10.4539 12.9148 10.3719 12.9969C10.2898 13.0789 10.1785 13.125 10.0625 13.125H1.3125C1.19647 13.125 1.08519 13.0789 1.00314 12.9969C0.921094 12.9148 0.875 12.8035 0.875 12.6875V3.9375C0.875 3.82147 0.921094 3.71019 1.00314 3.62814C1.08519 3.54609 1.19647 3.5 1.3125 3.5H7.119C7.23503 3.5 7.34631 3.45391 7.42836 3.37186C7.51041 3.28981 7.5565 3.17853 7.5565 3.0625Z" fill="#212529"></path>
-                          <path fill-rule="evenodd" clip-rule="evenodd" d="M14 0.4375C14 0.321468 13.9539 0.210188 13.8719 0.128141C13.7898 0.0460936 13.6785 0 13.5625 0H9.1875C9.07147 0 8.96019 0.0460936 8.87814 0.128141C8.79609 0.210188 8.75 0.321468 8.75 0.4375C8.75 0.553532 8.79609 0.664812 8.87814 0.746859C8.96019 0.828906 9.07147 0.875 9.1875 0.875H12.5064L5.37775 8.00275C5.33707 8.04343 5.30481 8.09172 5.28279 8.14486C5.26078 8.19801 5.24945 8.25497 5.24945 8.3125C5.24945 8.37003 5.26078 8.42699 5.28279 8.48014C5.30481 8.53328 5.33707 8.58157 5.37775 8.62225C5.41843 8.66293 5.46672 8.69519 5.51986 8.71721C5.57301 8.73922 5.62997 8.75055 5.6875 8.75055C5.74503 8.75055 5.80199 8.73922 5.85514 8.71721C5.90828 8.69519 5.95657 8.66293 5.99725 8.62225L13.125 1.49363V4.8125C13.125 4.92853 13.1711 5.03981 13.2531 5.12186C13.3352 5.20391 13.4465 5.25 13.5625 5.25C13.6785 5.25 13.7898 5.20391 13.8719 5.12186C13.9539 5.03981 14 4.92853 14 4.8125V0.4375Z" fill="#212529"></path>
-                          </g>
-                          <defs>
-                          <clipPath id="clip0_3768_15889">
-                          <rect width="14" height="14" fill="white"></rect>
-                          </clipPath>
-                          </defs>
-                        </svg>
-                      </a>
-                      <p style="font-size: .8rem; font-style: italic;">(one semester only)</p>
-                    </div>
-                  </div>
-                  <span style="font-weight:bold;" class="dollars rMissionary">$0</span>
-                </div>
-                <hr>
-                <div class="breakdown2">
-                  <div class="checkLabels">
+                  <div>
                     <p style="font-weight:bold;">Tuition Balance <span style="font-weight:normal;">(You Pay)</span> </p>
-                    <span class="dollars balance" style="font-weight:bold">$0</span>
+                    <p> (your first semester)</p>
                   </div>
-                  <div class="checkLabels excessLabel">
-                    <p style="font-weight:bold;">Excess <span style="font-weight:normal;">(You Pocket)</span> </p>
-                    <span class="dollars excess">$0</span>
-                  </div>
+                  <span class="dollars balance" style="font-weight:bold">$0</span>
                 </div>
-                <div class="startOverContainer">
-                  <a id="startOver">START OVER</a>
-                  <p class="statement">Additional aid from the government may be available to you. Please see the <a href="https://www.byui.edu/financial-aid/">Financial Aid</a> website for details.</p>
+                <div class="checkLabels excessLabel">
+                  <p style="font-weight:bold;">Excess <span style="font-weight:normal;">(You Pocket)</span> </p>
+                  <span class="dollars excess">$0</span>
                 </div>
+              </div>
+              <div class="startOverContainer">
+                <a id="startOver">START OVER</a>
+                <p class="statement">Additional aid may be available to you. Complete your <a href='https://www.byui.edu/financial-aid/federal-financial-aid'>FASFA</a> and explore <a href='https://www.byui.edu/financial-aid/university-scholarship-overview'>other scholarships</a> for more details.</p>
               </div>
             </div> 
             <div class="pending">

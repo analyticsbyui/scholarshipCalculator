@@ -110,6 +110,7 @@ body{
 }
 
 .transfer{
+  margin-top: 1.5em;
   height: 100%;
 }
 .calculatorForm form{
@@ -216,7 +217,7 @@ select, option{
   cursor: pointer;
 }
 
-.calculate, .calculateTransfer{
+.button{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -232,12 +233,13 @@ select, option{
   flex-shrink: 0;
   cursor: pointer;
 }
-.calculate, .calculateTransfer a{
+.button a{
   font-size: 13px;
   font-style: normal;
   font-weight: 300;
   letter-spacing: 2.5px;
   text-transform: uppercase;
+  color: #FFFF;
 }
 
 .calculateButton{
@@ -286,7 +288,7 @@ select, option{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 15px;
+  margin: 8px;
 
 }
 
@@ -306,7 +308,20 @@ select, option{
   line-height: 24px;
 }
 
-.breakdown{
+.noScholarshipScreen{
+  margin-top: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.noScholarshipScreen img{
+  max-width: 11em;
+}
+
+.breakdown, .breakdown2{
   color: var(--bold-gray); 
 }
 
@@ -315,7 +330,7 @@ select, option{
   gap: 8px;
   flex-direction: column;
   margin-bottom: 20px;
-  margin-top: 25px;
+  margin-top: 16px;
 }
 .leftSide{
   display: flex;
@@ -452,7 +467,7 @@ select, option{
     padding: 2px;
   }
 
-  .calculate, .calculateTransfer{
+  .button{
 
     border-radius: 4.8px;
     margin-bottom: 28px;
@@ -463,7 +478,7 @@ select, option{
     flex-shrink: 0;
   }
 
-  .calculate, .calculateTransfer a{
+  .button a{
     font-size: 14px;
     font-style: normal;
     font-weight: 600;
@@ -480,6 +495,7 @@ select, option{
 
 
 .hidden{
+  display: none;
   visibility: hidden;
   width: 0;
   height: 0;
