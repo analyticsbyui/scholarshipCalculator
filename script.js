@@ -18,15 +18,15 @@ let scholarshipMatrix = [
     [25, 25, 25, 25, 25,  0,  0,  0,  0,  0,  0]   //12
 ]
 
-let gpaColsTransfer = {
-  "3.75 - 3.899": 0, 
-  "3.90 - 3.95": 1,
-  "3.95 - 4.0": 2, 
-}
-
 let scholarshipTransferStudents = [
   100, 50, 25
 ]
+
+let gpaColsTransfer = {
+  "3.75 - 3.899": 2, 
+  "3.90 - 3.95": 1,
+  "3.95 - 4.0": 0, 
+}
 
 function getPercentages(GPA, ACT){
   let row = actRows[ACT]
@@ -84,6 +84,11 @@ function resetAnimation(element) {
 
 
 function calculateScholarship(GPA, ACT){
+  if (document.querySelector('.resultsTop').classList.contains('hidden')){
+    document.querySelector('.noScholarshipScreen').classList.add('hidden')
+    document.querySelector('.resultsTop').classList.remove('hidden')
+  }
+
   const member = document.querySelector(".member").checked
   const missionary = document.querySelector('.missionary').checked
   
@@ -134,6 +139,12 @@ function calculateScholarship(GPA, ACT){
 
 }
 function calculateScholarshipTransfer(GPA){
+
+  if (document.querySelector('.resultsTop').classList.contains('hidden')){
+    document.querySelector('.noScholarshipScreen').classList.add('hidden')
+    document.querySelector('.resultsTop').classList.remove('hidden')
+  }
+
   const member = document.querySelector(".memberTransfer").checked
   const missionary = document.querySelector('.missionaryTransfer').checked
   
