@@ -60,7 +60,11 @@ body{
   text-transform: uppercase;
 }
 
-.calcOpt p{
+.calcOpt button{
+  background-color:inherit;
+  border-top: none;
+  border-right: none;
+  border-left: none;
   text-align: center;
   display: flex;
   padding-top: 8px;
@@ -88,6 +92,7 @@ body{
 
 }
 .underline{
+  color: inherit;
   border-bottom: 2px solid #ADB5BD;
 }
 .bold{
@@ -244,6 +249,10 @@ select, option{
 
 .calculateButton{
   color: #FFFF;
+  font-size:100%;
+  font-family: inherit;
+  background-color: inherit;
+  border: 0;
 }
 
 
@@ -377,6 +386,8 @@ select, option{
 } 
 
 #startOver{
+  border:0;
+  background-color: inherit;
   padding-bottom: 2%;
   color: #343A40;
   font-size: 15px;

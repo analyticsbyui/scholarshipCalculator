@@ -1,0 +1,164 @@
+.trustarc-client-logo { 
+    padding: 0; 
+}
+
+#truste-header-text span { 
+   font-size: 1.8rem; 
+}
+
+#truste-banner-logo{
+    -o-object-fit: contain;
+    object-fit: contain;
+    max-width: 214px;
+    max-height: 214px;
+    width: 100px;
+    height: auto;
+
+}
+
+.trustarc-banner-details { 
+    padding: 5px 0; 
+}
+
+.trustarc-banner-actions { 
+   padding: 5px 30px 20px; 
+   display: flex; 
+}
+
+.trustarc-banner-actions > div { 
+   width: 400px; 
+   display: flex; 
+   flex-direction: row; 
+   align-content: center; 
+   justify-content: center; 
+   align-items: center; 
+   gap: 10px; 
+}
+
+.trustarc-body-text, .trustarc-warning-text { 
+    font-size: .9em; 
+}
+
+.trustarc-logo-container {
+    height: 120px !important;
+    padding: 10px 32px 10px 32px;
+}
+
+#truste-show-consent,#truste-consent-button,#truste-consent-required{ 
+    /*color: black !important; 
+    background: #006eb6 !important; 
+    border: 1px solid #006eb6 !important; */                 
+    font-size: 1em !important; 
+    !i; 
+    !; 
+}
+
+#truste-show-consent:hover,#truste-consent-button:hover,#truste-consent-required:hover{ 
+    opacity: 1 !important; 
+    background: #04a0f0  !important; 
+    border: 1px solid #04a0f0  !important; 
+}
+
+div#truste-consent-track { 
+  z-index: 10000000000; 
+ left: 0; 
+ position: fixed; 
+  bottom: 0; 
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2) !important; 
+}
+
+.trustarc-banner-footer { 
+ display: none; 
+}
+
+@media only screen and (min-width: 1px) and (max-width: 950px) { 
+    .trustarc-logo-container { 
+        display: none; 
+    }
+    
+    .trustarc-banner-actions { 
+       padding: 5px 20px; 
+       padding-bottom: 20px; 
+   }
+   
+   .trustarc-banner-actions > div { 
+       width: 100%; 
+       flex-direction: column; 
+       gap: unset; 
+   }
+   
+   #truste-consent-close { 
+        top: 6px !important; 
+        padding: 0 !important; 
+    }
+
+}
+    
+@media only screen and (min-width: 1px) and (max-width: 525px) { 
+    .trustarc-banner-details { 
+        padding: 30px 20px 0; 
+    }
+    
+    #truste-header-text span { 
+        font-size: 1.3rem; 
+    }
+    
+    .trustarc-client-logo { 
+        padding: 0; 
+    }
+    
+    #truste-header-text { 
+        font-size: 20px !important; 
+    }
+    
+    #truste-consent-close { 
+        top: -3px !important; 
+        margin: 15px !important; 
+        padding: 0 !important; 
+    }
+
+}
+    
+.trustarc-banner-body { 
+color: #000000; 
+}
+
+.trustarc-banner-body { 
+color: #000000; 
+}
+
+.trustarc-secondary-btn { 
+color: #ffffff            !important; 
+background-color: #efefef; 
+}
+
+.trustarc-secondary-btn { 
+color: #ffffff             !important; 
+background-color: #efefef; 
+}
+
+.trustarc-secondary-btn { 
+color: #000000  !important; 
+background-color: #efefef; 
+}
+
+.trustarc-agree-btn { 
+color: #FFFFFF                !important; 
+background-color: #363636; 
+}
+
+.trustarc-secondary-btn { 
+color: #000000   !important; 
+background-color: #efefef; 
+}
+
+.trustarc-agree-btn { 
+color: #FFFFFF                !important; 
+background-color: #363636; 
+}
+
+.trustarc-agree-btn { 
+color: #FFFFFF                 !important; 
+background-color: #363636; 
+}
+
