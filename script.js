@@ -131,7 +131,7 @@ function calculateScholarship(GPA, ACT){
       document.querySelector(".excessLabel").style.display = 'flex'
       document.querySelector(".excess").innerText = `$${excess.toLocaleString()}`
     }else{
-      document.querySelector(".excessLabel").style.display = 'none'
+      document.querySelector(".excessLabel").style.setProperty('display', 'none', 'important');
     }
     document.querySelector(".totalScholarships").innerText = `$${(merit + rMissionary).toLocaleString()}`
   }
@@ -180,7 +180,7 @@ function calculateScholarshipTransfer(GPA){
     document.querySelector(".excessLabel").style.display = 'flex'
     document.querySelector(".excess").innerText = `$${excess.toLocaleString()}`
   }else{
-    document.querySelector(".excessLabel").style.display = 'none'
+    document.querySelector(".excessLabel").style.setProperty('display', 'none', 'important')
   }
   document.querySelector(".totalScholarships").innerText = `$${(merit + rMissionary).toLocaleString()}`
 
@@ -210,6 +210,10 @@ document.querySelector('.calculate').addEventListener('click',()=>{
   const GPA = document.querySelector('#GPA').value;
   const ACT = document.querySelector('#ACT').value;
 
+  if (ACT == '' || GPA == ''){
+    return
+  }
+
   pending.classList.add('hidden')
   results.classList.remove('hidden')
   document.querySelector(".results").style.height = "100%"
@@ -229,6 +233,11 @@ document.querySelector('.calculate').addEventListener('click',()=>{
 document.querySelector('.calculateTransfer').addEventListener('click',()=>{
   resetAnimation(document.querySelector('.circle'))
   const GPA = document.querySelector('#GPATransfer').value;
+
+  if ( GPA == ''){
+    return
+  }
+
   pending.classList.add('hidden')
   results.classList.remove('hidden')
   document.querySelector(".results").style.height = "100%"
