@@ -131,7 +131,7 @@ function calculateScholarship(GPA, ACT){
       document.querySelector(".excessLabel").style.display = 'flex'
       document.querySelector(".excess").innerText = `$${excess.toLocaleString()}`
     }else{
-      document.querySelector(".excessLabel").style.setProperty('display', 'none', 'important');
+      document.querySelector(".excessLabel").style.display = "none";
     }
     document.querySelector(".totalScholarships").innerText = `$${(merit + rMissionary).toLocaleString()}`
   }
@@ -180,7 +180,7 @@ function calculateScholarshipTransfer(GPA){
     document.querySelector(".excessLabel").style.display = 'flex'
     document.querySelector(".excess").innerText = `$${excess.toLocaleString()}`
   }else{
-    document.querySelector(".excessLabel").style.setProperty('display', 'none', 'important')
+    document.querySelector(".excessLabel").style.display = "none";
   }
   document.querySelector(".totalScholarships").innerText = `$${(merit + rMissionary).toLocaleString()}`
 
@@ -194,8 +194,8 @@ function handleSmallWindowStartOver(){
 
   calculator.classList.add('hidden')
   resultsContainer.classList.remove('hidden')
-  resultsContainer.style.height = '37em';
-  resultsContainer.style.width = '20em';
+  resultsContainer.style.height = '46em';
+  resultsContainer.style.width = '26em';
   resultsContainer.style.visibility = 'visible'
 
 }
