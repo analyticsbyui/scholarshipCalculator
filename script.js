@@ -1,5 +1,6 @@
-let gpaCols = {"4.00": 0, "3.95": 1,"3.90": 2, "3.85": 3, "3.80": 4, "3.75": 5,"3.70": 6, "3.65": 7, "3.60": 8, "3.55": 9, "3.50": 10}
-let actRows= {"36": 0, "35": 1, "34": 2, "33": 3, "32": 4, "31": 5, "30": 6, "29": 7, "28": 8, "27": 9, "26": 10,"25": 11, "24": 12}
+let memberTuition = 2400; //Amount in USD
+let nonMemberTuition = 4800; //Amount in USD
+let missionaryScholarship = 1000; //Amount in USD
 
 let scholarshipMatrix = [ 
   //  0   1   2   3   4   5   6   7   8   9  10
@@ -18,7 +19,39 @@ let scholarshipMatrix = [
     [25, 25, 25, 25, 25,  0,  0,  0,  0,  0,  0]   //12
 ]
 
+let gpaCols = {
+  "4.00": 0, 
+  "3.95": 1,
+  "3.90": 2, 
+  "3.85": 3,
+  "3.80": 4,
+  "3.75": 5,
+  "3.70": 6,
+  "3.65": 7,
+  "3.60": 8,
+  "3.55": 9,
+  "3.50": 10
+}
+
+let actRows= {
+  "36": 0,
+  "35": 1,
+  "34": 2,
+  "33": 3,
+  "32": 4,
+  "31": 5,
+  "30": 6,
+  "29": 7,
+  "28": 8,
+  "27": 9,
+  "26": 10,
+  "25": 11,
+  "24": 12
+}
+
+
 let scholarshipTransferStudents = [
+// 0,  1,  2
   100, 50, 25
 ]
 
@@ -152,11 +185,11 @@ function calculateScholarshipTransfer(GPA){
   document.querySelector(".excessLabel").style.display = (!missionary)? 'none': 'flex'
  
 
-  const tuition = (member) ? 2400 : 4800
+  const tuition = (member) ? memberTuition : nonMemberTuition
   const tuitionPercentage = 100
   const meritPercentage = getPercentagesTransfer(GPA,ACT)
   const merit =  (meritPercentage * tuition)/tuitionPercentage
-  const rMissionary = (missionary) ? 1000 : 0
+  const rMissionary = (missionary) ? missionaryScholarship : 0
   const rmPercentage = (rMissionary * tuitionPercentage)/tuition
 
   let totalPay = tuition - merit - rMissionary
@@ -276,9 +309,6 @@ document.querySelector('#startOver').addEventListener("click", ()=>{
 
   if(window.innerWidth < 1000){
     resultsContainer.style.visibility = 'hidden' 
-    // calculator.classList.add('hidden')
-    // resultsContainer.style.visibility = 'visible'
-    // resultsContainer.classList.remove('hidden')
     resultsContainer.style.height = '0';
     resultsContainer.style.width = '0';
   }
