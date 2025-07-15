@@ -967,9 +967,9 @@
       document.querySelector(".excessLabel").style.display = (!missionary)? 'none': 'flex'
     
 
-      const tuition = (member) ? 2400 : 4800
+      const tuition = (member) ? memberTuition : nonMemberTuition
       const tuitionPercentage = 100
-      const meritPercentage = getPercentages(GPA,ACT)
+      const meritPercentage = (member) ? getPercentages(GPA,ACT) : getPercentages(GPA,ACT)/2
       if (meritPercentage == 0 && !missionary){
         document.querySelector('.resultsTop').classList.add('hidden')
         document.querySelector('.noScholarshipScreen').classList.remove('hidden')
@@ -1025,7 +1025,7 @@
 
       const tuition = (member) ? memberTuition : nonMemberTuition
       const tuitionPercentage = 100
-      const meritPercentage = getPercentagesTransfer(GPA,ACT)
+      const meritPercentage = (member) ? getPercentagesTransfer(GPA,ACT) : getPercentagesTransfer(GPA,ACT)/2
       const merit =  (meritPercentage * tuition)/tuitionPercentage
       const rMissionary = (missionary) ? 1000 : 0
       const rmPercentage = (rMissionary * tuitionPercentage)/tuition
