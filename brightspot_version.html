@@ -685,7 +685,7 @@
               <div class="calculate button">
                 <button type="button" class="calculateButton">CALCULATE</button>
               </div>
-              <p class="statement">This calculator is an approximate and not a promise of financial aid.</p>
+              <p class="statement">This provides an estimate and not a promise of financial aid.</p>
             </div>
             <div class="transfer hidden ">
               <div class="calculatorForm">
@@ -719,7 +719,7 @@
               <div class="calculateTransfer button">
                 <button type="button" class="calculateButton">CALCULATE</button>
               </div>
-              <p class="statement">This calculator is an approximate and not a promise of financial aid.</p>
+              <p class="statement">This provides an estimate and not a promise of financial aid.</p>
             </div>
           </div>
           <div class="resultsContainer" >
@@ -837,10 +837,40 @@
 
 
   <script>
+    // disable return missionary check box if not check the member checkbox (freshman)
+    const member = document.querySelector(".member")
+    const missionary = document.querySelector('.missionary')
+
+    member.addEventListener('change', function () {
+      if (member.checked) {
+        missionary.disabled = false;
+      }
+      else {
+        missionary.checked = false;
+        missionary.disabled = true;
+      }
+    })
+    
+    // disable return missionary check box if not check the member checkbox (transfer)
+    const memberTransfer = document.querySelector(".memberTransfer")
+    const missionaryTransfer = document.querySelector('.missionaryTransfer')
+
+    memberTransfer.addEventListener('change', function () {
+      if (memberTransfer.checked) {
+        missionaryTransfer.disabled = false;
+      }
+      else {
+        missionaryTransfer.checked = false;
+        missionaryTransfer.disabled = true;
+      }
+    })
+
+    // set variables
     let memberTuition = 2400; //Amount in USD
     let nonMemberTuition = 4800; //Amount in USD
     let missionaryScholarship = 1000; //Amount in USD
 
+    // Matrix of schalarship rate (freshman)
     let scholarshipMatrix = [ 
       //  0   1   2   3   4   5   6   7   8   9  10
         [100,100,100,100,100,100,100,100,100,100,100], //0
@@ -857,7 +887,8 @@
         [50, 50, 50, 25, 25, 25, 25, 25, 25, 25, 25],  //11
         [25, 25, 25, 25, 25,  0,  0,  0,  0,  0,  0]   //12
     ]
-
+    
+    // json convert GPA to number of column of the matrix above
     let gpaCols = {
       "4.00": 0, 
       "3.95": 1,
@@ -872,6 +903,7 @@
       "3.50": 10
     }
 
+    // json convert ACT score to number of column of the matrix
     let actRows= {
       "36": 0,
       "35": 1,
@@ -888,11 +920,13 @@
       "24": 12
     }
 
+    // matrix (vector) for schalarship rate (transfer)
     let scholarshipTransferStudents = [
     // 0,  1,  2
       100, 50, 25
     ]
 
+    // json convert GPA to number of column of the matrix
     let gpaColsTransfer = {
       "3.75 - 3.899": 2, 
       "3.90 - 3.95": 1,
@@ -900,12 +934,16 @@
     }
 
     function getPercentages(GPA, ACT){
+      // convert ACT score and GPA to coordinance of the matrix with jsons 
+      // and return the percentage in the coordinance as intager 
       let row = actRows[ACT]
       let col = gpaCols[GPA]
       
       return scholarshipMatrix[row][col]
     }
     function getPercentagesTransfer(GPA){
+      // convert GPA to corresponding number in the json
+      // and return the percentage in the vector
       let index = gpaColsTransfer[GPA]
       
       return scholarshipTransferStudents[index]
@@ -943,6 +981,7 @@
     }
 
     function resetAnimation(element) {
+      // reset the animation of doughnut chart
       element.style.animation = 'none'; 
       element.offsetHeight; 
       element.style.setProperty('--tuition', '0%');
@@ -955,28 +994,35 @@
 
 
     function calculateScholarship(GPA, ACT){
+      // reveal the result chart and hidden the placeholder
       if (document.querySelector('.resultsTop').classList.contains('hidden')){
         document.querySelector('.noScholarshipScreen').classList.add('hidden')
         document.querySelector('.resultsTop').classList.remove('hidden')
       }
 
+      // lookup the check boxes
       const member = document.querySelector(".member").checked
       const missionary = document.querySelector('.missionary').checked
-      
+
+      // display the return missionary schalarship if missionary check box is checked
       document.querySelector(".rMissionaryLabel").style.display = (!missionary)? 'none': 'flex'
+      // display the schalarship that over the tuition if it excessed
       document.querySelector(".excessLabel").style.display = (!missionary)? 'none': 'flex'
     
-
-      const tuition = (member) ? 2400 : 4800
+      // get necessary variables to calculate the available schalarship amount according to ACT and GPA
+      const tuition = (member) ? memberTuition : nonMemberTuition
       const tuitionPercentage = 100
-      const meritPercentage = getPercentages(GPA,ACT)
+      const meritPercentage = (member) ? getPercentages(GPA,ACT) : getPercentages(GPA,ACT)/2
+
       if (meritPercentage == 0 && !missionary){
+        // if no scholarship available
         document.querySelector('.resultsTop').classList.add('hidden')
         document.querySelector('.noScholarshipScreen').classList.remove('hidden')
         document.querySelector(".balance").innerText = `$${tuition.toLocaleString()}`
         
       } else {
-
+        // if there are scholarship available
+        // compute the available scholarship with the variables
         const merit =  (meritPercentage * tuition)/tuitionPercentage
         const rMissionary = (missionary) ? missionaryScholarship : 0
         const rmPercentage = (rMissionary * tuitionPercentage)/tuition
@@ -985,7 +1031,7 @@
         let balance = (totalPay > 0) ? totalPay : 0
         let excess = (totalPay < 0) ? totalPay * -1 : 0
         
-        
+        // drowing the chart with the results
         const circle = document.querySelector('.circle');
         circle.style.setProperty('--tuition', `${meritPercentage}%`);
         circle.style.setProperty('--merit', `${meritPercentage}%`);
@@ -994,6 +1040,7 @@
 
         setCSSAnimation(meritPercentage, rmPercentage)
 
+        // displays the results
         document.querySelector(".tuition").innerText = `$${tuition.toLocaleString()}`
         document.querySelector(".merit").innerText = `$${merit.toLocaleString()}`
         document.querySelector(".rMissionary").innerText = `$${rMissionary.toLocaleString()}`
@@ -1010,31 +1057,35 @@
 
     }
     function calculateScholarshipTransfer(GPA){
-
+      // reveal the result chart and hidden the placeholder
       if (document.querySelector('.resultsTop').classList.contains('hidden')){
         document.querySelector('.noScholarshipScreen').classList.add('hidden')
         document.querySelector('.resultsTop').classList.remove('hidden')
       }
 
+      // lookup the check boxes are checked
       const member = document.querySelector(".memberTransfer").checked
       const missionary = document.querySelector('.missionaryTransfer').checked
       
+      // display the return missionary schalarship if missionary check box is checked
       document.querySelector(".rMissionaryLabel").style.display = (!missionary)? 'none': 'flex'
+      // display the schalarship that over the tuition if it excessed
       document.querySelector(".excessLabel").style.display = (!missionary)? 'none': 'flex'
     
-
+      // get necessary variables to calculate the available schalarship amount according to GPA
       const tuition = (member) ? memberTuition : nonMemberTuition
       const tuitionPercentage = 100
-      const meritPercentage = getPercentagesTransfer(GPA,ACT)
+      const meritPercentage = (member) ? getPercentagesTransfer(GPA,ACT) : getPercentagesTransfer(GPA,ACT)/2
       const merit =  (meritPercentage * tuition)/tuitionPercentage
       const rMissionary = (missionary) ? 1000 : 0
       const rmPercentage = (rMissionary * tuitionPercentage)/tuition
 
+      // calculate the amount of the available scholarship 
       let totalPay = tuition - merit - rMissionary
       let balance = (totalPay > 0) ? totalPay : 0
       let excess = (totalPay < 0) ? totalPay * -1 : 0
       
-      
+      // drowing the chart with the results
       const circle = document.querySelector('.circle');
       circle.style.setProperty('--tuition', `${meritPercentage}%`);
       circle.style.setProperty('--merit', `${meritPercentage}%`);
@@ -1043,6 +1094,7 @@
 
       setCSSAnimation(meritPercentage, rmPercentage)
 
+      // displays the results
       document.querySelector(".tuition").innerText = `$${tuition.toLocaleString()}`
       document.querySelector(".merit").innerText = `$${merit.toLocaleString()}`
       document.querySelector(".rMissionary").innerText = `$${rMissionary.toLocaleString()}`
@@ -1062,7 +1114,8 @@
 
 
     function handleSmallWindowStartOver(){
-
+      
+      // reset the state when reloaded or start over
       calculator.classList.add('hidden')
       resultsContainer.classList.remove('hidden')
       resultsContainer.style.height = '46em';
@@ -1071,6 +1124,7 @@
 
     }
 
+    // place eleements of the webapge in html
     const results =  document.querySelector('.results')
     const pending =  document.querySelector('.pending')
     const resultsContainer = document.querySelector(".resultsContainer")
@@ -1126,7 +1180,7 @@
 
 
 
-
+    // setting to handle start over
     document.querySelector('#startOver').addEventListener("click", ()=>{
 
       document.getElementById('calculatorForm').reset()
@@ -1155,7 +1209,7 @@
     const freshmanCalculator = document.querySelector('.freshman')
     const transferCalculator = document.querySelector('.transfer')
 
-
+    // display freshman calculator or transfer calculator
     let freshmanOpt = document.querySelector('.freshmanOpt')
     let transferOpt = document.querySelector('.transferOpt')
 
