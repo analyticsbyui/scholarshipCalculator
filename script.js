@@ -1,7 +1,38 @@
+
+// disable return missionary check box if not check the member checkbox (freshman)
+const member = document.querySelector(".member")
+const missionary = document.querySelector('.missionary')
+
+member.addEventListener('change', function () {
+  if (member.checked) {
+    missionary.disabled = false;
+  }
+  else {
+    missionary.checked = false;
+    missionary.disabled = true;
+  }
+})
+
+// disable return missionary check box if not check the member checkbox (transfer)
+const memberTransfer = document.querySelector(".memberTransfer")
+const missionaryTransfer = document.querySelector('.missionaryTransfer')
+
+memberTransfer.addEventListener('change', function () {
+  if (memberTransfer.checked) {
+    missionaryTransfer.disabled = false;
+  }
+  else {
+    missionaryTransfer.checked = false;
+    missionaryTransfer.disabled = true;
+  }
+})
+
+// set variables
 let memberTuition = 2400; //Amount in USD
 let nonMemberTuition = 4800; //Amount in USD
 let missionaryScholarship = 1000; //Amount in USD
 
+// Matrix of schalarship rate (freshman)
 let scholarshipMatrix = [ 
   //  0   1   2   3   4   5   6   7   8   9  10
     [100,100,100,100,100,100,100,100,100,100,100], //0
@@ -19,6 +50,7 @@ let scholarshipMatrix = [
     [25, 25, 25, 25, 25,  0,  0,  0,  0,  0,  0]   //12
 ]
 
+// json convert GPA to number of column of the matrix above
 let gpaCols = {
   "4.00": 0, 
   "3.95": 1,
@@ -33,6 +65,7 @@ let gpaCols = {
   "3.50": 10
 }
 
+// json convert ACT score to number of column of the matrix
 let actRows= {
   "36": 0,
   "35": 1,
@@ -49,12 +82,13 @@ let actRows= {
   "24": 12
 }
 
-
+// matrix (vector) for schalarship rate (transfer)
 let scholarshipTransferStudents = [
 // 0,  1,  2
   100, 50, 25
 ]
 
+// json convert GPA to number of column of the matrix
 let gpaColsTransfer = {
   "3.75 - 3.899": 2, 
   "3.90 - 3.95": 1,
@@ -62,12 +96,16 @@ let gpaColsTransfer = {
 }
 
 function getPercentages(GPA, ACT){
+  // convert ACT score and GPA to coordinance of the matrix with jsons 
+  // and return the percentage in the coordinance as intager 
   let row = actRows[ACT]
   let col = gpaCols[GPA]
   
   return scholarshipMatrix[row][col]
 }
 function getPercentagesTransfer(GPA){
+  // convert GPA to corresponding number in the json
+  // and return the percentage in the vector
   let index = gpaColsTransfer[GPA]
   
   return scholarshipTransferStudents[index]
@@ -75,7 +113,7 @@ function getPercentagesTransfer(GPA){
 
 function setCSSAnimation(meritPercentage, rmPercentage){
   
-  const styleSheet = document.styleSheets[2]; 
+  const styleSheet = document.styleSheets[0]; 
 
   // Remove any existing keyframes rule with the same name
   for (let i = 0; i < styleSheet.cssRules.length; i++) {
@@ -105,6 +143,7 @@ function setCSSAnimation(meritPercentage, rmPercentage){
 }
 
 function resetAnimation(element) {
+  // reset the animation of doughnut chart
   element.style.animation = 'none'; 
   element.offsetHeight; 
   element.style.setProperty('--tuition', '0%');
@@ -117,37 +156,44 @@ function resetAnimation(element) {
 
 
 function calculateScholarship(GPA, ACT){
+  // reveal the result chart and hidden the placeholder
   if (document.querySelector('.resultsTop').classList.contains('hidden')){
     document.querySelector('.noScholarshipScreen').classList.add('hidden')
     document.querySelector('.resultsTop').classList.remove('hidden')
   }
 
+  // lookup the check boxes
   const member = document.querySelector(".member").checked
   const missionary = document.querySelector('.missionary').checked
-  
-  document.querySelector(".rMissionaryLabel").style.display = (!missionary)? 'none': 'flex'
-  document.querySelector(".excessLabel").style.display = (!missionary)? 'none': 'flex'
- 
 
-  const tuition = (member) ? 2400 : 4800
+  // display the return missionary schalarship if missionary check box is checked
+  document.querySelector(".rMissionaryLabel").style.display = (!missionary)? 'none': 'flex'
+  // display the schalarship that over the tuition if it excessed
+  document.querySelector(".excessLabel").style.display = (!missionary)? 'none': 'flex'
+
+  // get necessary variables to calculate the available schalarship amount according to ACT and GPA
+  const tuition = (member) ? memberTuition : nonMemberTuition
   const tuitionPercentage = 100
-  const meritPercentage = getPercentages(GPA,ACT)
+  const meritPercentage = (member) ? getPercentages(GPA,ACT) : getPercentages(GPA,ACT)/2
+
   if (meritPercentage == 0 && !missionary){
+    // if no scholarship available
     document.querySelector('.resultsTop').classList.add('hidden')
     document.querySelector('.noScholarshipScreen').classList.remove('hidden')
     document.querySelector(".balance").innerText = `$${tuition.toLocaleString()}`
     
   } else {
-
+    // if there are scholarship available
+    // compute the available scholarship with the variables
     const merit =  (meritPercentage * tuition)/tuitionPercentage
-    const rMissionary = (missionary) ? 1000 : 0
+    const rMissionary = (missionary) ? missionaryScholarship : 0
     const rmPercentage = (rMissionary * tuitionPercentage)/tuition
 
     let totalPay = tuition - merit - rMissionary
     let balance = (totalPay > 0) ? totalPay : 0
     let excess = (totalPay < 0) ? totalPay * -1 : 0
     
-    
+    // drowing the chart with the results
     const circle = document.querySelector('.circle');
     circle.style.setProperty('--tuition', `${meritPercentage}%`);
     circle.style.setProperty('--merit', `${meritPercentage}%`);
@@ -156,6 +202,7 @@ function calculateScholarship(GPA, ACT){
 
     setCSSAnimation(meritPercentage, rmPercentage)
 
+    // displays the results
     document.querySelector(".tuition").innerText = `$${tuition.toLocaleString()}`
     document.querySelector(".merit").innerText = `$${merit.toLocaleString()}`
     document.querySelector(".rMissionary").innerText = `$${rMissionary.toLocaleString()}`
@@ -164,7 +211,7 @@ function calculateScholarship(GPA, ACT){
       document.querySelector(".excessLabel").style.display = 'flex'
       document.querySelector(".excess").innerText = `$${excess.toLocaleString()}`
     }else{
-      document.querySelector(".excessLabel").style.display = "none";
+      document.querySelector(".excessLabel").style.display = "none";;
     }
     document.querySelector(".totalScholarships").innerText = `$${(merit + rMissionary).toLocaleString()}`
   }
@@ -172,31 +219,35 @@ function calculateScholarship(GPA, ACT){
 
 }
 function calculateScholarshipTransfer(GPA){
-
+  // reveal the result chart and hidden the placeholder
   if (document.querySelector('.resultsTop').classList.contains('hidden')){
     document.querySelector('.noScholarshipScreen').classList.add('hidden')
     document.querySelector('.resultsTop').classList.remove('hidden')
   }
 
+  // lookup the check boxes are checked
   const member = document.querySelector(".memberTransfer").checked
   const missionary = document.querySelector('.missionaryTransfer').checked
   
+  // display the return missionary schalarship if missionary check box is checked
   document.querySelector(".rMissionaryLabel").style.display = (!missionary)? 'none': 'flex'
+  // display the schalarship that over the tuition if it excessed
   document.querySelector(".excessLabel").style.display = (!missionary)? 'none': 'flex'
- 
 
+  // get necessary variables to calculate the available schalarship amount according to GPA
   const tuition = (member) ? memberTuition : nonMemberTuition
   const tuitionPercentage = 100
-  const meritPercentage = getPercentagesTransfer(GPA,ACT)
+  const meritPercentage = (member) ? getPercentagesTransfer(GPA,ACT) : getPercentagesTransfer(GPA,ACT)/2
   const merit =  (meritPercentage * tuition)/tuitionPercentage
-  const rMissionary = (missionary) ? missionaryScholarship : 0
+  const rMissionary = (missionary) ? 1000 : 0
   const rmPercentage = (rMissionary * tuitionPercentage)/tuition
 
+  // calculate the amount of the available scholarship 
   let totalPay = tuition - merit - rMissionary
   let balance = (totalPay > 0) ? totalPay : 0
   let excess = (totalPay < 0) ? totalPay * -1 : 0
   
-  
+  // drowing the chart with the results
   const circle = document.querySelector('.circle');
   circle.style.setProperty('--tuition', `${meritPercentage}%`);
   circle.style.setProperty('--merit', `${meritPercentage}%`);
@@ -205,6 +256,7 @@ function calculateScholarshipTransfer(GPA){
 
   setCSSAnimation(meritPercentage, rmPercentage)
 
+  // displays the results
   document.querySelector(".tuition").innerText = `$${tuition.toLocaleString()}`
   document.querySelector(".merit").innerText = `$${merit.toLocaleString()}`
   document.querySelector(".rMissionary").innerText = `$${rMissionary.toLocaleString()}`
@@ -224,15 +276,17 @@ function calculateScholarshipTransfer(GPA){
 
 
 function handleSmallWindowStartOver(){
-
+  
+  // reset the state when reloaded or start over
   calculator.classList.add('hidden')
   resultsContainer.classList.remove('hidden')
   resultsContainer.style.height = '46em';
-  resultsContainer.style.width = '26em';
+  resultsContainer.style.width = '28em';
   resultsContainer.style.visibility = 'visible'
 
 }
 
+// place eleements of the webapge in html
 const results =  document.querySelector('.results')
 const pending =  document.querySelector('.pending')
 const resultsContainer = document.querySelector(".resultsContainer")
@@ -288,7 +342,7 @@ document.querySelector('.calculateTransfer').addEventListener('click',()=>{
 
 
 
-
+// setting to handle start over
 document.querySelector('#startOver').addEventListener("click", ()=>{
 
   document.getElementById('calculatorForm').reset()
@@ -317,7 +371,7 @@ document.querySelector('#startOver').addEventListener("click", ()=>{
 const freshmanCalculator = document.querySelector('.freshman')
 const transferCalculator = document.querySelector('.transfer')
 
-
+// display freshman calculator or transfer calculator
 let freshmanOpt = document.querySelector('.freshmanOpt')
 let transferOpt = document.querySelector('.transferOpt')
 
@@ -325,7 +379,7 @@ let transferOpt = document.querySelector('.transferOpt')
 transferOpt.addEventListener('click', ()=>{
   
 
- if (!freshmanCalculator.classList.contains('hidden')){
+if (!freshmanCalculator.classList.contains('hidden')){
 
   transferOpt.classList.add('current')
   freshmanOpt.classList.add('underline')
@@ -335,7 +389,7 @@ transferOpt.addEventListener('click', ()=>{
   freshmanCalculator.classList.add('hidden')
   transferCalculator.classList.remove('hidden')
 
- }
+}
 
 })
 
