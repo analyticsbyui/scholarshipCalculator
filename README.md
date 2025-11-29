@@ -26,7 +26,8 @@ The original design used three different files (all included in this repository)
     </script>
 </div>
 ```
-This version of the completed code is placed in the [Full Calculator](fullCalculator.html) file. However, Brightspot uses Bootstrap for its styles, and the original design for this calculator was made without it. This caused some styling issues when rendering the full code into the school's website. To account for this the version that is used in Brigthspot has some edited styles to make sure that the design matches the proposal. The code with the **complete live code** can be found in the [Brightspot-Version Calculator](brightspot_version.html).
+The calculator's design was created by the UX team working with Roger Nichols and Lexi Harris. These are the files 
+This version of the completed code is placed in the [Full Calculator](fullCalculator.html) file. However, Brightspot (the CMS platform where most of the outward-facing pages are hosted) uses Bootstrap for its styles, and the original design for this calculator was made without it. This caused some styling issues when rendering the full code into the school's website. To account for this the version that is used in Brigthspot has some edited styles to make sure that the design matches the proposal. The code with the **complete live code** can be found in the [Brightspot-Version Calculator](brightspot_version.html).
 ## Structure
 The Calculator is separated into two screens with different components: 
 - Calculator
