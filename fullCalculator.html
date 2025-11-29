@@ -839,34 +839,6 @@
   </main>
 
   <script>
-    // disable return missionary check box if not check the member checkbox (freshman)
-    const member = document.querySelector(".member")
-    const missionary = document.querySelector('.missionary')
-
-    member.addEventListener('change', function () {
-      if (member.checked) {
-        missionary.disabled = false;
-      }
-      else {
-        missionary.checked = false;
-        missionary.disabled = true;
-      }
-    })
-    
-    // disable return missionary check box if not check the member checkbox (transfer)
-    const memberTransfer = document.querySelector(".memberTransfer")
-    const missionaryTransfer = document.querySelector('.missionaryTransfer')
-
-    memberTransfer.addEventListener('change', function () {
-      if (memberTransfer.checked) {
-        missionaryTransfer.disabled = false;
-      }
-      else {
-        missionaryTransfer.checked = false;
-        missionaryTransfer.disabled = true;
-      }
-    })
-
     // set variables
     let memberTuition = 2400; //Amount in USD
     let nonMemberTuition = 4800; //Amount in USD
@@ -889,7 +861,7 @@
         [50, 50, 50, 25, 25, 25, 25, 25, 25, 25, 25],  //11
         [25, 25, 25, 25, 25,  0,  0,  0,  0,  0,  0]   //12
     ]
-    
+
     // json convert GPA to number of column of the matrix above
     let gpaCols = {
       "4.00": 0, 
@@ -943,6 +915,7 @@
       
       return scholarshipMatrix[row][col]
     }
+
     function getPercentagesTransfer(GPA){
       // convert GPA to corresponding number in the json
       // and return the percentage in the vector
@@ -952,6 +925,8 @@
     }
 
     function setCSSAnimation(meritPercentage, rmPercentage){
+      // creates the rule that will set up the animation and
+      // adds it to the styles of code
       
       const styleSheet = document.styleSheets[0]; 
 
@@ -994,7 +969,6 @@
 
     }
 
-
     function calculateScholarship(GPA, ACT){
       // reveal the result chart and hidden the placeholder
       if (document.querySelector('.resultsTop').classList.contains('hidden')){
@@ -1010,7 +984,7 @@
       document.querySelector(".rMissionaryLabel").style.display = (!missionary)? 'none': 'flex'
       // display the schalarship that over the tuition if it excessed
       document.querySelector(".excessLabel").style.display = (!missionary)? 'none': 'flex'
-    
+
       // get necessary variables to calculate the available schalarship amount according to ACT and GPA
       const tuition = (member) ? memberTuition : nonMemberTuition
       const tuitionPercentage = 100
@@ -1058,6 +1032,7 @@
 
 
     }
+
     function calculateScholarshipTransfer(GPA){
       // reveal the result chart and hidden the placeholder
       if (document.querySelector('.resultsTop').classList.contains('hidden')){
@@ -1073,7 +1048,7 @@
       document.querySelector(".rMissionaryLabel").style.display = (!missionary)? 'none': 'flex'
       // display the schalarship that over the tuition if it excessed
       document.querySelector(".excessLabel").style.display = (!missionary)? 'none': 'flex'
-    
+
       // get necessary variables to calculate the available schalarship amount according to GPA
       const tuition = (member) ? memberTuition : nonMemberTuition
       const tuitionPercentage = 100
@@ -1113,10 +1088,8 @@
 
     }
 
-
-
     function handleSmallWindowStartOver(){
-      
+
       // reset the state when reloaded or start over
       calculator.classList.add('hidden')
       resultsContainer.classList.remove('hidden')
@@ -1126,14 +1099,46 @@
 
     }
 
+    // Disable return missionary check box if the member checkbox is not selected (freshman)
+    const member = document.querySelector(".member")
+    const missionary = document.querySelector('.missionary')
+
+    member.addEventListener('change', function () {
+      if (member.checked) {
+        missionary.disabled = false;
+      }
+      else {
+        missionary.checked = false;
+        missionary.disabled = true;
+      }
+    })
+
+    // disable return missionary check box if not check the member checkbox (transfer)
+    const memberTransfer = document.querySelector(".memberTransfer")
+    const missionaryTransfer = document.querySelector('.missionaryTransfer')
+
+    memberTransfer.addEventListener('change', function () {
+      if (memberTransfer.checked) {
+        missionaryTransfer.disabled = false;
+      }
+      else {
+        missionaryTransfer.checked = false;
+        missionaryTransfer.disabled = true;
+      }
+    })
+
     // place eleements of the webapge in html
     const results =  document.querySelector('.results')
     const pending =  document.querySelector('.pending')
     const resultsContainer = document.querySelector(".resultsContainer")
     const calculator = document.querySelector(".calculator")
 
+    // process user input in freshmen tab
     document.querySelector('.calculate').addEventListener('click',()=>{
+      // clear the previous animation
       resetAnimation(document.querySelector('.circle'))
+
+      // get the values that the user has chosen
       const GPA = document.querySelector('#GPA').value;
       const ACT = document.querySelector('#ACT').value;
 
@@ -1141,12 +1146,16 @@
         return
       }
 
+      // display the new screen
       pending.classList.add('hidden')
       results.classList.remove('hidden')
       document.querySelector(".results").style.height = "100%"
       document.querySelector(".results").style.width = "100%"
+
+      // perform calculation
       calculateScholarship(GPA, ACT)
 
+      // mobile view screen change
       if (resultsContainer.classList.contains('hidden')){
         calculator.classList.add('hidden')
         resultsContainer.classList.remove('hidden')
@@ -1156,21 +1165,28 @@
       }
     })
 
-
+    // process user input in transfer student tab
     document.querySelector('.calculateTransfer').addEventListener('click',()=>{
+      // clear the previous animation
       resetAnimation(document.querySelector('.circle'))
+
+      // get the values that the user has chosen
       const GPA = document.querySelector('#GPATransfer').value;
 
       if ( GPA == ''){
         return
       }
 
+      // display the new screen
       pending.classList.add('hidden')
       results.classList.remove('hidden')
       document.querySelector(".results").style.height = "100%"
       document.querySelector(".results").style.width = "100%"
+
+      // perform calculation
       calculateScholarshipTransfer(GPA)
 
+      // mobile view screen change  
       if (resultsContainer.classList.contains('hidden')){
         calculator.classList.add('hidden')
         resultsContainer.classList.remove('hidden')
@@ -1185,9 +1201,11 @@
     // setting to handle start over
     document.querySelector('#startOver').addEventListener("click", ()=>{
 
+      // reset form and animation
       document.getElementById('calculatorForm').reset()
       resetAnimation(document.querySelector('.circle'))
 
+      // remove the result screen 
       if (calculator.classList.contains('hidden')){
         calculator.classList.remove('hidden')
         resultsContainer.classList.add('hidden')
@@ -1201,6 +1219,7 @@
         document.querySelector('.noScholarshipScreen').classList.add('hidden')
       }    
 
+      // handle small screens
       if(window.innerWidth < 1000){
         resultsContainer.style.visibility = 'hidden' 
         resultsContainer.style.height = '0';
@@ -1218,7 +1237,7 @@
 
     transferOpt.addEventListener('click', ()=>{
       
-
+    // hide the freshman calculator to show the transer student screen
     if (!freshmanCalculator.classList.contains('hidden')){
 
       transferOpt.classList.add('current')
@@ -1233,7 +1252,7 @@
 
     })
 
-
+    // return to the freshman calculator screeen
     freshmanOpt.addEventListener('click', ()=>{
       freshmanOpt.classList.add('current')
       transferOpt.classList.add('underline')
@@ -1245,10 +1264,9 @@
       freshmanCalculator.classList.remove('hidden')
     })
 
+    // change date to always be the previous year
     const date = new Date().getFullYear();
     document.querySelector('.rmYear').innerText = date - 1
-
-
   </script>
   
 </body>
