@@ -26,8 +26,14 @@ The original design used three different files (all included in this repository)
     </script>
 </div>
 ```
-The calculator's design was created by the UX team working with Roger Nichols and Lexi Harris. These are the files 
-This version of the completed code is placed in the [Full Calculator](fullCalculator.html) file. However, Brightspot (the CMS platform where most of the outward-facing pages are hosted) uses Bootstrap for its styles, and the original design for this calculator was made without it. This caused some styling issues when rendering the full code into the school's website. To account for this the version that is used in Brigthspot has some edited styles to make sure that the design matches the proposal. The code with the **complete live code** can be found in the [Brightspot-Version Calculator](brightspot_version.html).
+The calculator's design was created by the UX team working with Roger Nichols and Lexi Harris. These are the files that were shared:
+- [Dev Mode Design File](https://www.figma.com/design/Lw4jn6PTwymIg3OtqGmdLW/Site-Cost-Calculator-Final?node-id=1673-8694&m=dev&t=LzqcACcKFTC3DIY8-1)
+ 
+- [Desktop Prototype](https://www.figma.com/proto/Lw4jn6PTwymIg3OtqGmdLW/Site-Cost-Calculator-Final?page-id=1673%3A8694&node-id=3243-26218&p=f&viewport=-1095%2C-1527%2C0.16&t=tLjzTQ06EFpZm4SA-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=3243%3A26218&show-proto-sidebar=1)
+ 
+- [Mobile Prototype](https://www.figma.com/proto/Lw4jn6PTwymIg3OtqGmdLW/Site-Cost-Calculator-Final?page-id=3001%3A11878&node-id=3008-6027&p=f&viewport=809%2C904%2C0.08&t=RsuUsAErLA9sXVmf-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=3008%3A6027&show-proto-sidebar=1)
+
+This version of the completed code is placed in the [Full Calculator](fullCalculator.html) file. However, Brightspot (the CMS platform where most of the outward-facing pages are hosted) uses Bootstrap for its styles, and the original design for this calculator was made without it. This caused some styling issues when rendering the full code into the school's website. To account for this, the version that is used in Brigthspot has some edited styles to make sure that the rendered code matches the proposal design. The code with the **complete live code** can be found in the [Brightspot-Version Calculator](brightspot_version.html).
 ## Structure
 The Calculator is separated into two screens with different components: 
 - Calculator
@@ -41,22 +47,22 @@ The Calculator is separated into two screens with different components:
 - Results
     - Has three main components:
         - Descriptive Animation:
-            - Displays cost of tuition per semester. It will change if the prospective student is a member of the church or not.
-            - Depending on the results of the calculation it will display the percentage of scholarship by filling a circle (representing 100% of tuition) to indicate how much tuition would be covered by the total sum of the scholarships.
-            - It will also show in different colors the amount of Merit Scholarship and the amount of Returned Missionary Scholarship (if applicable). 
-            - It clearly  states the total amount of scholarship received.
+            - Displays cost of tuition per semester. It will change whether the prospective student is a member of the church or not.
+            - Depending on the results of the calculation, it will display the percentage of scholarships by filling a circle (representing 100% of tuition) to indicate how much tuition would be covered by the total sum of the scholarships.
+            - It will also show in different colors the amount of **Merit Scholarship** and the amount of **Returned Missionary Scholarship** (if applicable). 
+            - It clearly  states the total amount of scholarships received.
         - Scholarship Breakdown:
             - If a scholarship is given, this section will show the correct amount distributed from the Merit Scholarship and the Returned Missionary Scholarship (if applicable).
         - Semester Tuition Breakdown:
             - This section will show the amount that the prospective student must pay after applying the scholarships.
             - If the merit scholarship pays for full tuition and the student is a recently returned missionary, an additional line will appear stating that there will be a one-time "excess" total to the amount of the RM Scholarship.
-    - If the student doesn't qualify for any scholarship the screen will have a link to see more Financial Aid Options, and it will display the total amount of tuition.
+    - If the student doesn't qualify for any scholarship, the screen will have a link to see more Financial Aid Options, and it will display the total amount of tuition.
 
 
 
 ## Important Details
 
-The calculator's logic is based on tuition and scholarship values as of 2025. In future years, these values may change—such as updated tuition rates for members and non-members, adjustments to the Returned Missionary Scholarship, or revised discount percentages for Freshman and Transfer students.
+The calculator's logic is based on tuition and scholarship values as of 2025. In future years, these values may change such as updated tuition rates for members and non-members, adjustments to the Returned Missionary Scholarship, or revised discount percentages for Freshman and Transfer students.
 
 In this section, I’ll break down how the calculator manages these variables and explain how to update them as needed.
 
@@ -66,11 +72,7 @@ The tuition calculation is based on two primary variables:
 1. Member tuition
 2. Non-Member tuition
 
-These values are hard-coded near the top of the calculator’s script, as shown below:
-
-javascript
-Copy
-Edit
+These values are hard coded near the top of the calculator’s script, as shown below:
 
 ```js
 let memberTuition = 2400; //Amount in USD
@@ -90,7 +92,7 @@ The **Returned Missionary** checkbox includes the following statement:
 
 *I returned from a mission after Jan 1st ____*
 
-The year in this statement is dynamically generated by subtracting 1 from the current year. This ensures the calculator always reflects a rolling time frame—specifically, within two years of the stated date—without requiring manual updates each year.
+The year in this statement is dynamically generated by subtracting 1 from the current year. This ensures the calculator always reflects a rolling time frame,specifically within two years of the stated date without requiring manual updates each year.
 
 The code that handles this logic is located at the bottom of the `<script>` tag and looks like this:
 
